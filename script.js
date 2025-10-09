@@ -63,9 +63,9 @@ function parseRepoURL(url) {
 // Fetch Repo Metadata
 async function fetchRepoData(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-  if (!res.ok) throw new Error("❌ Repo not found or inaccessible");
+  if (!res.ok) throw new Error("Repo not found or inaccessible");
   const data = await res.json();
-  console.log("📦 Repo metadata fetched successfully");
+  console.log("Repo metadata fetched successfully");
   return data;
 }
 
@@ -74,12 +74,12 @@ async function fetchRepoFiles(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents`);
   if (!res.ok) return [];
   const files = await res.json();
-  console.log("📂 Repo file list loaded:", files.map(f => f.name));
+  console.log("Repo file list loaded:", files.map(f => f.name));
   return files.map(f => f.name);
 }
 
 function generateReadme(data, files) {
-  return `# 🚀 ${data.name}
+  return `#  ${data.name}
 
 > **${data.description || "No description provided."}**
 
@@ -118,7 +118,7 @@ ${files.includes("requirements.txt") ? "pip install -r requirements.txt" : ""}
 
 ## 🏃‍♂️ **Usage Instructions**
 
-Start the application and explore its features with ease. Here’s how you can get going: 🚦
+Start the application and explore its features with ease. 🚦
 
 \`\`\`bash
 ${files.includes("package.json") ? "npm start" : "python main.py"}
@@ -178,27 +178,38 @@ Feel free to reach out for support or collaboration opportunities! 📬
     const clearBtn = document.getElementById("clearBtn");
     const copyBtn = document.getElementById("copyBtn");
 
+    // Function to toggle visibility of clear and copy buttons based on editor content
+    function toggleButtons() {
+      const hasText = readmeEditor.value.trim() !== '';
+      clearBtn.style.display = hasText ? 'inline-block' : 'none';
+      copyBtn.style.display = hasText ? 'inline-block' : 'none';
+    }
+
+    // Initially hide buttons
+    toggleButtons();
+
     // 🛠 Generate README
     const generateReadmeHandler = async () => {
       const input = repoInput.value.trim();
       const info = parseRepoURL(input);
       if (!info) {
-        alert("❌ Invalid GitHub link. Please check and try again.");
+        alert(" Invalid GitHub link. Please check and try again.");
         return;
       }
 
       try {
-        console.log("🔍 Fetching repo data...");
+        console.log("Fetching repo data...");
         const data = await fetchRepoData(info.owner, info.repo);
         const files = await fetchRepoFiles(info.owner, info.repo);
         const readme = generateReadme(data, files);
 
         readmeEditor.value = readme;
         readmePreview.innerHTML = marked.parse(readme);
-        console.log("✅ README generated and previewed!");
+        toggleButtons();
+        console.log(" README generated and previewed!");
       } catch (err) {
-        alert("🚫 Could not fetch repo data. Try a public repo.");
-        console.error("❌ Error:", err.message);
+        alert(" Could not fetch repo data. Try a public repo.");
+        console.error("Error:", err.message);
       }
     };
 
@@ -208,7 +219,8 @@ Feel free to reach out for support or collaboration opportunities! 📬
     // Live Markdown Preview
     readmeEditor.addEventListener("input", () => {
       readmePreview.innerHTML = marked.parse(readmeEditor.value);
-      console.log("🔁 Preview updated");
+      toggleButtons();
+      console.log("Preview updated");
     });
 
     // Download README.md
@@ -221,29 +233,53 @@ Feel free to reach out for support or collaboration opportunities! 📬
       a.download = "README.md";
       a.click();
       URL.revokeObjectURL(url);
-      console.log("📁 README.md downloaded successfully 🎉");
+      console.log("README.md downloaded successfully ");
     });
 
     // Clear README Editor
     clearBtn.addEventListener("click", () => {
       readmeEditor.value = "";
       readmePreview.innerHTML = "";
-      console.log("🧹 README editor cleared");
+      toggleButtons();
+      console.log("README editor cleared");
     });
 
     // Copy README Editor content to clipboard
     copyBtn.addEventListener("click", () => {
       const content = readmeEditor.value;
       if (!content) {
-        alert("⚠️ Nothing to copy!");
+        alert("Nothing to copy!");
         return;
       }
       navigator.clipboard.writeText(content).then(() => {
-        console.log("📋 README content copied to clipboard");
+        console.log("README content copied to clipboard");
         alert("README content copied to clipboard!");
       }).catch(err => {
-        console.error("❌ Failed to copy:", err);
+        console.error("Failed to copy:", err);
         alert("Failed to copy content. Please try manually.");
       });
+    });
+
+    // Mobile Side Menu Toggle
+    const hamburger = document.getElementById("hamburger");
+    const sideMenu = document.getElementById("sideMenu");
+    const closeBtn = document.getElementById("closeBtn");
+
+    hamburger.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      hamburger.classList.toggle("open");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      hamburger.classList.remove("open");
+    });
+
+    // Close side menu when clicking on overlay
+    sideMenu.addEventListener("click", (e) => {
+      if (e.target === sideMenu) {
+        sideMenu.classList.remove("open");
+        hamburger.classList.remove("open");
+      }
     });
   });

@@ -1,0 +1,4 @@
+- [x] Edit script.js to toggle 'open' class on hamburger button for animation
+- [x] Edit styles.css to hide nav on mobile in media query
+- [x] Test the hamburger menu functionality
+- [x] Fix hamburger navbar toggle bug in script.js
