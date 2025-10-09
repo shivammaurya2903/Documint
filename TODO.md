@@ -1,0 +1,3 @@
+- [x] Update script.js: Fix selectors to use IDs, change repoInput to repoUrl, add event listener to generateBtnFab, remove redundant sidebar listeners
+- [x] Update index.html: Remove onclick attributes from generate buttons
+- [x] Test the site by launching browser and checking for errors

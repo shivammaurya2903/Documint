@@ -10,8 +10,8 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => observer.observe(section));
 
 // Live markdown preview
-const textarea = document.querySelector("textarea");
-const output = document.querySelector(".markdown-box");
+const textarea = document.getElementById("readmeEditor");
+const output = document.getElementById("readmePreview");
 
 textarea.addEventListener("input", () => {
   output.innerHTML = marked.parse(textarea.value);
@@ -33,16 +33,7 @@ navLinks.forEach(link => {
   });
 });
 
-// Sidebar item activation on click and deactivation on double-click
-document.querySelectorAll(".sidebar ul li").forEach(item => {
-  item.addEventListener("click", () => {
-    item.classList.add("active");
-  });
 
-  item.addEventListener("dblclick", () => {
-    item.classList.remove("active");
-  });
-});
 
 
 // Ensure only one sidebar item is active at a time
@@ -109,7 +100,22 @@ ${data.license?.name || "No license specified."}
 }
 
 document.getElementById("generateBtn").addEventListener("click", async () => {
-  const input = document.getElementById("repoInput").value;
+  const input = document.getElementById("repoUrl").value;
+  const info = parseRepoURL(input);
+  if (!info) return alert("Invalid GitHub link");
+
+  try {
+    const data = await fetchRepoData(info.owner, info.repo);
+    const readme = generateReadme(data);
+    document.getElementById("readmeEditor").value = readme;
+    document.getElementById("readmePreview").innerHTML = marked.parse(readme);
+  } catch (err) {
+    alert("Could not fetch repo data");
+  }
+});
+
+document.getElementById("generateBtnFab").addEventListener("click", async () => {
+  const input = document.getElementById("repoUrl").value;
   const info = parseRepoURL(input);
   if (!info) return alert("Invalid GitHub link");
 
