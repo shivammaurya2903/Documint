@@ -446,6 +446,84 @@ footer {
   }
 }
 
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+  header {
+    padding: 0.5rem 1rem;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 0.25rem;
+  }
+
+  .editor-header h2 {
+    font-size: 1rem;
+  }
+
+  .input-button-group {
+    gap: 0.25rem;
+  }
+
+  #repoInput {
+    font-size: 0.9rem;
+  }
+
+  #generateBtn, #downloadBtn, #clearBtn, #copyBtn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .editor-section h3, .preview-section h3 {
+    font-size: 1rem;
+  }
+
+  #readmeEditor, #readmePreview {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  footer {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .fab {
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .side-menu ul li {
+    font-size: 1.1rem;
+  }
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
