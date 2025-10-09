@@ -125,8 +125,8 @@ main {
 }
 .fab {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 5.5rem;
+  right: 4rem;
   background-color: #056C89;
   color: white;
   border: none;
@@ -318,8 +318,10 @@ main {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 1rem;
+  /* Ensure buttons align vertically */
+  align-items: baseline;
 }
 
 #repoInput {
@@ -344,6 +346,22 @@ main {
 }
 
 #generateBtn:hover, #downloadBtn:hover {
+  background-color: #023653;
+}
+
+/* Styling for Clear and Copy buttons */
+#clearBtn, #copyBtn {
+  background-color: #056C89;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#clearBtn:hover, #copyBtn:hover {
   background-color: #023653;
 }
 
@@ -413,4 +431,3 @@ footer {
     font-size: 1.5rem;
   }
 }
-  

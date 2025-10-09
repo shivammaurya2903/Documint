@@ -43,11 +43,7 @@ document.querySelectorAll(".sidebar ul li").forEach(item => {
 });
 
 
-// Parse GitHub repo URL
-
-// Parse GitHub repo link
-// Returns { owner, repo } or null
-// 🔍 Parse GitHub Repo Link
+// Parse GitHub Repo Link
 function parseRepoURL(url) {
   try {
     const parsed = new URL(url);
@@ -64,7 +60,7 @@ function parseRepoURL(url) {
   }
 }
 
-// 📡 Fetch Repo Metadata
+// Fetch Repo Metadata
 async function fetchRepoData(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
   if (!res.ok) throw new Error("❌ Repo not found or inaccessible");
@@ -73,7 +69,7 @@ async function fetchRepoData(owner, repo) {
   return data;
 }
 
-// 📁 Fetch Repo File List
+// Fetch Repo File List
 async function fetchRepoFiles(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents`);
   if (!res.ok) return [];
@@ -171,58 +167,83 @@ Feel free to reach out for support or collaboration opportunities! 📬
 `;
 }
 
-// 🧠 DOM Ready
-document.addEventListener("DOMContentLoaded", () => {
-  const repoInput = document.getElementById("repoUrl");
-  const generateBtn = document.getElementById("generateBtn");
-  const generateBtnFab = document.getElementById("generateBtnFab");
-  const readmeEditor = document.getElementById("readmeEditor");
-  const readmePreview = document.getElementById("readmePreview");
-  const downloadBtn = document.getElementById("downloadBtn");
+  // DOM Ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const repoInput = document.getElementById("repoUrl");
+    const generateBtn = document.getElementById("generateBtn");
+    const generateBtnFab = document.getElementById("generateBtnFab");
+    const readmeEditor = document.getElementById("readmeEditor");
+    const readmePreview = document.getElementById("readmePreview");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const copyBtn = document.getElementById("copyBtn");
 
-  // 🛠 Generate README
-  const generateReadmeHandler = async () => {
-    const input = repoInput.value.trim();
-    const info = parseRepoURL(input);
-    if (!info) {
-      alert("❌ Invalid GitHub link. Please check and try again.");
-      return;
-    }
+    // 🛠 Generate README
+    const generateReadmeHandler = async () => {
+      const input = repoInput.value.trim();
+      const info = parseRepoURL(input);
+      if (!info) {
+        alert("❌ Invalid GitHub link. Please check and try again.");
+        return;
+      }
 
-    try {
-      console.log("🔍 Fetching repo data...");
-      const data = await fetchRepoData(info.owner, info.repo);
-      const files = await fetchRepoFiles(info.owner, info.repo);
-      const readme = generateReadme(data, files);
+      try {
+        console.log("🔍 Fetching repo data...");
+        const data = await fetchRepoData(info.owner, info.repo);
+        const files = await fetchRepoFiles(info.owner, info.repo);
+        const readme = generateReadme(data, files);
 
-      readmeEditor.value = readme;
-      readmePreview.innerHTML = marked.parse(readme);
-      console.log("✅ README generated and previewed!");
-    } catch (err) {
-      alert("🚫 Could not fetch repo data. Try a public repo.");
-      console.error("❌ Error:", err.message);
-    }
-  };
+        readmeEditor.value = readme;
+        readmePreview.innerHTML = marked.parse(readme);
+        console.log("✅ README generated and previewed!");
+      } catch (err) {
+        alert("🚫 Could not fetch repo data. Try a public repo.");
+        console.error("❌ Error:", err.message);
+      }
+    };
 
-  generateBtn.addEventListener("click", generateReadmeHandler);
-  generateBtnFab.addEventListener("click", generateReadmeHandler);
+    generateBtn.addEventListener("click", generateReadmeHandler);
+    generateBtnFab.addEventListener("click", generateReadmeHandler);
 
-  // 🔄 Live Markdown Preview
-  readmeEditor.addEventListener("input", () => {
-    readmePreview.innerHTML = marked.parse(readmeEditor.value);
-    console.log("🔁 Preview updated");
+    // Live Markdown Preview
+    readmeEditor.addEventListener("input", () => {
+      readmePreview.innerHTML = marked.parse(readmeEditor.value);
+      console.log("🔁 Preview updated");
+    });
+
+    // Download README.md
+    downloadBtn.addEventListener("click", () => {
+      const content = readmeEditor.value;
+      const blob = new Blob([content], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "README.md";
+      a.click();
+      URL.revokeObjectURL(url);
+      console.log("📁 README.md downloaded successfully 🎉");
+    });
+
+    // Clear README Editor
+    clearBtn.addEventListener("click", () => {
+      readmeEditor.value = "";
+      readmePreview.innerHTML = "";
+      console.log("🧹 README editor cleared");
+    });
+
+    // Copy README Editor content to clipboard
+    copyBtn.addEventListener("click", () => {
+      const content = readmeEditor.value;
+      if (!content) {
+        alert("⚠️ Nothing to copy!");
+        return;
+      }
+      navigator.clipboard.writeText(content).then(() => {
+        console.log("📋 README content copied to clipboard");
+        alert("README content copied to clipboard!");
+      }).catch(err => {
+        console.error("❌ Failed to copy:", err);
+        alert("Failed to copy content. Please try manually.");
+      });
+    });
   });
-
-  // 📥 Download README.md
-  downloadBtn.addEventListener("click", () => {
-    const content = readmeEditor.value;
-    const blob = new Blob([content], { type: "text/markdown" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "README.md";
-    a.click();
-    URL.revokeObjectURL(url);
-    console.log("📁 README.md downloaded successfully 🎉");
-  });
-});
