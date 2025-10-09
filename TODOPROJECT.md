@@ -71,4 +71,3 @@ This file tracks all backend development tasks for DocuMint — the AI-powered R
 
 ---
 
-Made with ❤️ by Shivam Maurya
