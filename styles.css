@@ -5,8 +5,6 @@
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
   scrollbar-color: #888 #f1f1f1;
-  max-height: 100vh;
- 
 }
 body {
   margin: 0;
@@ -217,28 +215,84 @@ main {
 
 .editor-preview {
   display: flex;
-  flex: 1;
-}
-
-.editor {
+  flex-direction: column;
   flex: 1;
   padding: 1rem;
-  background-color: #88B4BE;
 }
 
-.editor textarea {
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #056C89;
+}
+
+.editor-header h2 {
+  margin: 0;
+  color: #023653;
+}
+
+.editor-container {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}
+
+.editor-section,
+.preview-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.editor-section h3,
+.preview-section h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #023653;
+  font-size: 1.1rem;
+}
+
+#readmeEditor {
+  flex: 1;
   width: 100%;
-  height: 100%;
-  border: none;
-  resize: none;
-  padding: 1rem;
+  height: auto;
   font-family: monospace;
   font-size: 1rem;
+  padding: 1rem;
+  border: 1px solid #056C89;
   border-radius: 8px;
-  background-color: #FFFFFF;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  resize: none;
+  background-color: #F9F9F9;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
 }
-.editor textarea,
+
+#readmeEditor:focus {
+  outline: none;
+  box-shadow: 0 0 12px #056C89;
+}
+
+#readmePreview {
+  flex: 1;
+  width: 100%;
+  height: auto;
+  border: 1px solid #056C89;
+  padding: 1rem;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
 .markdown-box {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
@@ -247,14 +301,51 @@ main {
   border-radius: 12px;
   transition: all 0.3s ease;
 }
-.markdown-preview {
-  flex: 1;
-  padding: 1rem;
+#repoInput, #generateBtn, #downloadBtn {
+  margin: 0.5rem 0.5rem 1rem 0;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #056C89;
+  border-radius: 6px;
   background-color: #C3E4E9;
-  overflow-y: auto;
+  color: #023653;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+/* Flex container for input and buttons */
+.input-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
 
+#repoInput {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  color: #023653;
+  cursor: text;
+}
+
+#repoInput:focus {
+  outline: none;
+  border-color: #023653;
+  background-color: #E0F0F5;
+}
+
+#generateBtn, #downloadBtn {
+  background-color: #056C89;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#generateBtn:hover, #downloadBtn:hover {
+  background-color: #023653;
+}
 
 footer {
   margin-top: auto;
@@ -286,10 +377,10 @@ footer {
   .hero input {
     width: 100%;
   }
-  .editor-preview {
+  .editor-container {
     flex-direction: column;
   }
-  .editor, .markdown-preview {
+  .editor-section, .preview-section {
     height: 50vh;
   }
   .sidebar {
@@ -320,7 +411,6 @@ footer {
   }
   .hero h2 {
     font-size: 1.5rem;
-
   }
 }
   

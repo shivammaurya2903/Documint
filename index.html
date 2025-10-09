@@ -22,7 +22,7 @@
   </header>
 
   <section class="hero-section">
-    <section class="hero">
+  <section class="hero">
       <h2>Generate your README.md with DocuMint</h2>
       <p>Just drop your GitHub repo link and let DocuMint do the rest.</p>
       <input type="text" id="repoUrl" placeholder="Paste your GitHub repo link" />
@@ -51,15 +51,24 @@
   </aside>
 
   <section class="editor-preview">
-    <section class="editor">
-      <textarea placeholder="# Project Title&#10;&#10;A brief description of what this project does and who it's for..."></textarea>
-    </section>
-    <section class="markdown-preview">
-      <h3>Live Markdown Preview</h3>
-      <div class="markdown-box">
-        <!-- AI-generated README will appear here -->
+    <div class="editor-header">
+      <h2>README.md Editor & Preview</h2>
+      <div class="input-button-group">
+        <button id="downloadBtn">Download README.md</button>
       </div>
-    </section>
+    </div>
+
+    <div class="editor-container">
+      <div class="editor-section">
+        <h3>Live Editor</h3>
+        <textarea id="readmeEditor" rows="20" cols="50"></textarea>
+      </div>
+
+      <div class="preview-section">
+        <h3>Markdown Preview</h3>
+        <div id="readmePreview"></div>
+      </div>
+    </div>
   </section>
 </main>
 
