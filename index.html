@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocuMint</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="DocuMint Logo" />
+      <h1>DocuMint</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <section class="hero">
+      <h2>Generate your README.md with DocuMint</h2>
+      <p>Just drop your GitHub repo link and let DocuMint do the rest.</p>
+      <input type="text" id="repoUrl" placeholder="Paste your GitHub repo link" />
+      <button id="generateBtn" onclick="generateReadme()">⚡ Generate README</button>
+      <button id="generateBtnFab" class="fab" onclick="generateReadme()">⚡ Generate README</button>
+    </section>
+  </section>
+  <main class="container" >
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul id="sectionList">
+      <li class="active">Title & Description</li>
+      <li>Features</li>
+      <li>Installation</li>
+      <li>Usage</li>
+      <li>Contributing</li>
+      <li>Acknowledgements</li>
+      <li>License</li>
+      <li>Demo</li>
+      <li>Documentation</li>
+      <li>Authors</li>
+      <li>Appendix</li>
+      <li>Reference</li>
+      <li id="customTrigger">+ Custom Section</li>
+    </ul>
+  </aside>
+
+  <section class="editor-preview">
+    <section class="editor">
+      <textarea placeholder="# Project Title&#10;&#10;A brief description of what this project does and who it's for..."></textarea>
+    </section>
+    <section class="markdown-preview">
+      <h3>Live Markdown Preview</h3>
+      <div class="markdown-box">
+        <!-- AI-generated README will appear here -->
+      </div>
+    </section>
+  </section>
+</main>
+
+  <footer>
+    <p>Made with ❤️ by Shivam Maurya</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
