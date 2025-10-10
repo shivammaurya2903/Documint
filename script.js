@@ -169,7 +169,7 @@ Feel free to reach out for support or collaboration opportunities! 📬
 
   // DOM Ready
   document.addEventListener("DOMContentLoaded", () => {
-    const repoInput = document.getElementById("repoUrl");
+    const repoInput = document.getElementById("repoInput");
     const generateBtn = document.getElementById("generateBtn");
     const generateBtnFab = document.getElementById("generateBtnFab");
     const readmeEditor = document.getElementById("readmeEditor");
@@ -190,8 +190,15 @@ Feel free to reach out for support or collaboration opportunities! 📬
 
     // 🛠 Generate README
     const generateReadmeHandler = async () => {
-      const input = repoInput.value.trim();
-      const info = parseRepoURL(input);
+    const repoInput = document.getElementById("repoInput");
+    if (!repoInput) {
+      console.error("repoInput not found in DOM.");
+      alert("README generation failed: input field missing.");
+      return;
+    }
+    const input = repoInput.value.trim();
+    const info = parseRepoURL(input);
+     
       if (!info) {
         alert(" Invalid GitHub link. Please check and try again.");
         return;
@@ -260,26 +267,4 @@ Feel free to reach out for support or collaboration opportunities! 📬
       });
     });
 
-    // Mobile Side Menu Toggle
-    const hamburger = document.getElementById("hamburger");
-    const sideMenu = document.getElementById("sideMenu");
-    const closeBtn = document.getElementById("closeBtn");
-
-    hamburger.addEventListener("click", () => {
-      sideMenu.classList.toggle("open");
-      hamburger.classList.toggle("open");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      sideMenu.classList.remove("open");
-      hamburger.classList.remove("open");
-    });
-
-    // Close side menu when clicking on overlay
-    sideMenu.addEventListener("click", (e) => {
-      if (e.target === sideMenu) {
-        sideMenu.classList.remove("open");
-        hamburger.classList.remove("open");
-      }
-    });
   });

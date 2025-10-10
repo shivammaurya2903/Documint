@@ -1,2 +1,0 @@
-- [x] Edit style.css in @media (max-width: 768px) to change nav from text-align: center to display: flex; justify-content: center; align-items: center;
-- [x] Test the mobile layout for navbar centering.
