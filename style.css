@@ -1,3 +1,14 @@
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary) rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none; 
+  list-style: none;
+  
+}
 :root {
   --primary: #023653;
   --accent: #056C89;
@@ -95,21 +106,31 @@ nav a {
   margin-bottom: 1rem;
 }
 
+
 .cta-btn {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: #fff !important;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
-.hero-preview img {
+.cta-btn:hover {
+  background: var(--primary);
+}
+
+
+.hero-preview video {
   max-width: 500px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  max-height: 400px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 4rem;
 }
 
 /* Features Section */
@@ -216,21 +237,6 @@ nav a {
   color: #555;
 }
 
-.cta-btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.cta-btn:hover {
-  background: var(--primary);
-}
-
 /* ❓ FAQ Section */
 .faq {
   padding: 3rem;
@@ -306,11 +312,6 @@ nav a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.footer-brand .icon {
-  font-size: 1.5rem;
-  color: #ffffff;
 }
 
 .footer-brand h2 {
@@ -390,4 +391,29 @@ nav a {
   border-top: 1px solid #cbd5e1;
   padding-top: 1rem;
   color: #cbd5e1;
+}
+
+/* New icon styles */
+.feature-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+
+.nav-icon {
+  font-size: 1rem;
+  margin-right: 0.3rem;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  font-weight: bold;
+  filter: brightness(0) invert(1);
 }

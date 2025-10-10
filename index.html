@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DocuMint – Smarter Documentation</title>
+  <title>DocuMint</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <header class="navbar">
     <div class="logo">
-      <span class="icon"><img src="images/logo.png" alt=""></span>
+      <span class="icon"><img src="images/logo-b.png" alt="DocuMint Logo"></span>
       <h1>DocuMint</h1>
     </div>
     <nav>
-      <a href="#">Features</a>
-      <a href="#">Pricing</a>
-      <a href="#">FAQ</a>
+      <a href="#"><span class="nav-icon"></span>Features</a>
+      <a href="#"><span class="nav-icon"></span>Pricing</a>
+      <a href="#"><span class="nav-icon"></span>FAQ</a>
     </nav>
     <div class="nav-buttons">
       <a href="login.html" class="outline-btn">Log In</a>
@@ -32,21 +35,21 @@
       <small>Free during beta. No credit card required.</small>
     </div>
     <div class="hero-preview">
-      <img src="readme-preview.png" alt="Sample README preview" />
+      <video src="images/promo.mp4" controls muted loop poster="images/preview.png" onmouseover="this.play()" onmouseleave="this.pause()"></video>
     </div>
   </section>
 
   <section class="features">
     <div class="feature">
-      <h3>✅ Compatible with All Public GitHub Repos</h3>
+      <span class="feature-icon"></span><h3> Compatible with All Public GitHub Repos</h3>
       <p>Connect and generate documentation for any public repository with ease.</p>
     </div>
     <div class="feature">
-      <h3>⚡ Lightning-Fast README Generation</h3>
+      <span class="feature-icon"></span><h3> Lightning-Fast README Generation</h3>
       <p>Get professional documentation in seconds using advanced AI technology.</p>
     </div>
     <div class="feature">
-      <h3>📄 Full Documentation Coming Soon</h3>
+      <span class="feature-icon"></span><h3>Full Documentation Coming Soon</h3>
       <p>Complete code documentation features are in development and coming to you soon.</p>
     </div>
   </section>
@@ -54,20 +57,20 @@
   <section class="cta">
     <h2>Ready to Streamline Your Project’s Documentation?</h2>
     <a href="signup.html" class="cta-btn">Sign Up for Free</a>
-    <p><a href="#">Give it a try for free!</a></p>
+    <p>No credit card required. Start documenting smarter today!</p>
   </section>
-  <!-- 🚀 Roadmap Section -->
+  <!--  Roadmap Section -->
 <section class="roadmap">
   <h2>Code Documentation is Next</h2>
   <p class="roadmap-subtitle">Our roadmap to complete code documentation</p>
 
   <div class="timeline">
     <div class="phase">
-      <h3>🔵 Phase 1: README Generation</h3>
+      <h3>Phase 1: README Generation</h3>
       <p>Available now — Create professional README files instantly.</p>
     </div>
     <div class="phase">
-      <h3>🕒 Phase 2: Full Code Documentation</h3>
+      <h3> Phase 2: Full Code Documentation</h3>
       <p>Coming soon — Comprehensive documentation for classes, functions, and more.</p>
     </div>
   </div>
@@ -78,7 +81,7 @@
     <a href="signup.html" class="cta-btn">Create Account →</a>
   </div>
 </section>
-<!-- ❓ FAQ Section -->
+<!--  FAQ Section -->
 <section class="faq">
   <h2><span class="highlight">Questions?</span> Look here.</h2>
 
@@ -153,9 +156,10 @@
     <div class="footer-social">
       <h4>Connect</h4>
       <div class="icons">
-        <a href="#"><img src="twitter.svg" alt="Twitter" /></a>
-        <a href="#"><img src="github.svg" alt="GitHub" /></a>
-        <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" title="LinkedIn"><i class="fa-brands fa-square-linkedin"></i></a>
       </div>
       <ul class="legal">
         <li><a href="#">Terms</a></li>
