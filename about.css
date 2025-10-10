@@ -4,7 +4,9 @@
   padding: 0;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
-  scrollbar-color: #888 #f1f1f1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-color: white #88B4BE;
 }
 /* 🌈 Background Gradient */
 body {
@@ -49,7 +51,6 @@ body {
   max-width: 1000px;
   margin: auto;
   background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
@@ -124,6 +125,15 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+.about-documint ul li {
+  background-color: #88B4BE;
+  margin: 0.5rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
 
 /* 🧑‍💻 Creator Section */
 .creator {
@@ -133,6 +143,12 @@ body {
   border-radius: 12px;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
+
+.creator a {
+  font-size: 1.2rem;
+  color: #023653;
+}
+
 .thank-you {
   background-color: #88B4BE;
   padding: 2rem;
@@ -188,7 +204,6 @@ body {
 }
 .footer {
   background: rgba(2, 54, 83, 0.6);
-  backdrop-filter: blur(12px);
   color: white;
   padding: 3rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -369,6 +384,7 @@ body {
   }
   .creator {
     padding: 1.5rem;
+    margin: 1rem;
   }
   .creator h2 {
     font-size: 1.4rem;
@@ -376,9 +392,11 @@ body {
   .creator p {
     font-size: 1rem;
   }
+  .creator a {
+    font-size: 1.2rem;
+  }
   .footer-links, .footer-contact {
     text-align: center;
   }
-
 
 }

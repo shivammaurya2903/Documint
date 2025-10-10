@@ -1,0 +1,4 @@
+- [x] Fix unclosed <p> tag in thank-you section of about.html
+- [x] Fix typo in footer of about.html ("All right reserved ." to "All rights reserved.")
+- [x] Add rel="noopener noreferrer" to external links in creator section
+- [x] Add Font Awesome CSS link to head for icon rendering

@@ -9,35 +9,16 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <header>
+  <header class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="DocuMint Logo" />
+      <span class="icon"><img src="images/logo.png" alt="DocuMint Logo"></span>
       <h1>DocuMint</h1>
     </div>
-    <nav>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <!-- Mobile Side Menu -->
-  <div class="side-menu" id="sideMenu">
-    <div class="side-menu-content">
-      <button class="close-btn" id="closeBtn" aria-label="Close menu">&times;</button>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
+    <div class="nav-buttons">
+      <a href="about.html" class="outline-btn">About</a>
     </div>
-  </div>
-
+  </header>
+  
   <section class="hero">
       <h2>Generate your README.md with DocuMint</h2>
       <p>Just drop your GitHub repo link and let DocuMint do the rest.</p>

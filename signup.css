@@ -10,9 +10,17 @@
   scrollbar-color: #cccccc #f5f5f5;
 }
 
+:root {
+  --primary: #023653;
+  --accent: #056C89;
+  --light-bg: #EEEEEE;
+  --text-dark: #000000;
+  --text-light: #555555;
+}
+
 body {
-  background: #EEEEEE; /* Light neutral background */
-  color: #000000;
+  background: var(--light-bg); /* Light neutral background */
+  color: var(--text-dark);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +36,7 @@ body {
   justify-content: center;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  border: 1px solid #056C89;
+  border: 1px solid var(--accent);
   background: #fff;
   animation: shadowPulse 3s ease-in-out infinite;
 }
@@ -61,23 +69,23 @@ body {
 
 .logo .icon {
   font-size: 1.5rem;
-  color: #023653; /* Deep brand blue */
+  color: var(--primary); /* Deep brand blue */
 }
 
 .logo h1 {
   font-size: 1.8rem;
-  color: #023653;
+  color: var(--primary);
 }
 
 .login-panel h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #023653;
+  color: var(--primary);
 }
 
 .login-panel p {
   margin-bottom: 1.5rem;
-  color: #555555;
+  color: var(--text-light);
 }
 
 form {
@@ -88,7 +96,7 @@ form {
 form label {
   margin-top: 1rem;
   font-weight: bold;
-  color: #023653;
+  color: var(--primary);
 }
 
 form input {
@@ -107,14 +115,14 @@ form input {
 
 .forgot a {
   font-size: 0.9rem;
-  color: #056C89;
+  color: var(--accent);
   text-decoration: none;
 }
 
 button[type="submit"] {
   margin-top: 1.5rem;
   padding: 0.75rem;
-  background: #056C89;
+  background: var(--accent);
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -123,7 +131,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: #023653;
+  background: var(--primary);
 }
 
 .divider {
@@ -145,7 +153,7 @@ form .error {
 }
 
 .signup a {
-  color: #056C89;
+  color: var(--accent);
   text-decoration: none;
   font-weight: bold;
 }
@@ -153,7 +161,7 @@ form .error {
 /*Promo Panel */
 .promo-panel {
   flex: 1;
-  background: #023653;
+  background: var(--primary);
   color: #ffffff;
   height: 100%;
   padding: 2rem;
@@ -196,7 +204,7 @@ blockquote footer {
 .join-us button {
   padding: 0.75rem;
   background: #ffffff;
-  color: #023653;
+  color: var(--primary);
   border: none;
   border-radius: 6px;
   font-weight: bold;
@@ -205,7 +213,7 @@ blockquote footer {
 }
 
 .join-us button:hover {
-  background: #023653;
+  background: var(--primary);
   color: #ffffff;
 }
 
