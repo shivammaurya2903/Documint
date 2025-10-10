@@ -1,0 +1,393 @@
+:root {
+  --primary: #023653;
+  --accent: #056C89;
+  --light-bg: #EEEEEE;
+  --text-dark: #000000;
+  --text-light: #555555;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #fff;
+  border-bottom: 1px solid var(--accent);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo .icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.logo .icon img {
+  height: 60px;
+  width: 80px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.nav-buttons a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.outline-btn {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: #fff;
+}
+
+.filled-btn {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 3rem;
+  background: #fff;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hero-preview img {
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.feature {
+  max-width: 300px;
+}
+
+.feature h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: var(--text-light);
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 3rem;
+  background: var(--light-bg);
+}
+
+.cta h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.cta a {
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* 🚀 Roadmap Section */
+.roadmap {
+  text-align: center;
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.roadmap h2 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-subtitle {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+}
+
+.phase {
+  max-width: 300px;
+  text-align: left;
+}
+
+.phase h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.phase p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.join-early {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.join-early h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.join-early p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--primary);
+}
+
+/* ❓ FAQ Section */
+.faq {
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+
+.faq h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.faq .highlight {
+  color: var(--primary);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-list details {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.faq-list summary {
+  font-weight: bold;
+  color: #023653;
+  font-size: 1rem;
+}
+
+.faq-list p {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.contact-prompt {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.contact-prompt a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer {
+  background: #023653;
+  color: #ffffff;
+  padding: 3rem 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-brand .icon {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.footer-brand h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.footer-brand p {
+  margin-top: 0.5rem;
+  color: #cbd5e1;
+}
+
+.footer-links h4,
+.footer-newsletter h4,
+.footer-social h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.footer-links ul,
+.footer-social ul.legal {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li,
+.footer-social li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-social a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter input {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-newsletter button {
+  padding: 0.5rem 1rem;
+  background: #056C89;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.footer-newsletter p {
+  color: #cbd5e1;
+}
+
+.footer-social .icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-social img {
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 1rem;
+  color: #cbd5e1;
+}

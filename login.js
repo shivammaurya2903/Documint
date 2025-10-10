@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('please fill credentials');
       } else {
         alert('Welcome to DocuMint! Redirecting to the main page.');
-        window.location.href = 'index.html';
+        window.location.href = 'home.html';
       }
     });
   });

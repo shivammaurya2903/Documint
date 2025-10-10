@@ -127,13 +127,7 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.hero input {
-  padding: 0.5rem;
-  width: 60%;
-  margin-top: 1rem;
-  border: 1px solid #056C89;
-  border-radius: 4px;
-}
+/* Legacy hero input style, but now using #repoInput */
 
 .hero button {
   background-color: #056C89;
@@ -174,6 +168,7 @@ main {
 .markdown-box {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid #88B4BE;
   border-radius: 12px;
   padding: 1.5rem;
@@ -324,6 +319,7 @@ main {
 .markdown-box {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -345,16 +341,18 @@ main {
 .input-button-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: nowrap;
   margin-bottom: 1rem;
+  width: 100%;
   /* Ensure buttons align vertically */
   align-items: baseline;
 }
 
 #repoInput {
   width: 100%;
-  max-width: 400px;
+  max-width: 80%;
   box-sizing: border-box;
   color: #023653;
   cursor: text;
@@ -469,6 +467,17 @@ footer {
   }
   .hero h2 {
     font-size: 1.5rem;
+  }
+
+  .input-button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  #repoInput {
+    width: 100%;
+    max-width: none;
   }
 }
 
@@ -695,6 +704,7 @@ footer {
   transition: opacity 0.5s ease, visibility 0.5s ease;
   z-index: -1;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .side-menu.open::before {

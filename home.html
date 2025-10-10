@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocuMint</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="DocuMint Logo" />
+      <h1>DocuMint</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <div class="side-menu-content">
+      <button class="close-btn" id="closeBtn" aria-label="Close menu">&times;</button>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="hero">
+      <h2>Generate your README.md with DocuMint</h2>
+      <p>Just drop your GitHub repo link and let DocuMint do the rest.</p>
+      <div class="input-button-group">
+        <input type="text" id="repoInput" placeholder="Paste your GitHub repo link" />
+        <button id="generateBtn">⚡ Generate README</button>
+      </div>
+      <button id="generateBtnFab" class="fab">⚡ Generate README</button>
+    </section>
+  <main class="container" >
+  <aside class="sidebar">
+    <h2>Sections</h2>
+    <ul id="sectionList">
+      <li class="active">Title & Description</li>
+      <li>Features</li>
+      <li>Installation</li>
+      <li>Usage</li>
+      <li>Contributing</li>
+      <li>Acknowledgements</li>
+      <li>License</li>
+      <li>Demo</li>
+      <li>Documentation</li>
+      <li>Authors</li>
+      <li>Appendix</li>
+      <li>Reference</li>
+      <li id="customTrigger">+ Custom Section</li>
+    </ul>
+  </aside>
+
+  <section class="editor-preview">
+    <div class="editor-header">
+      <h2>README.md Editor & Preview</h2>
+      <div class="input-button-group">
+        <button id="downloadBtn">Download README.md</button>
+        <button id="clearBtn">Clear</button>
+        <button id="copyBtn">Copy</button>
+      </div>
+    </div>
+
+    <div class="editor-container">
+      <div class="editor-section">
+        <h3 id="editorLabel">Live Editor</h3>
+        <textarea id="readmeEditor" rows="20" cols="50" placeholder="Write your README.md content here" aria-labelledby="editorLabel"></textarea>
+      </div>
+
+      <div class="preview-section">
+        <h3 id="previewLabel">Markdown Preview</h3>
+        <div id="readmePreview" aria-labelledby="previewLabel" role="region"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+    <p>&copy 2025 DocuMint. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
