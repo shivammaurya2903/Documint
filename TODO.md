@@ -1,5 +1,0 @@
-- [x] Add Font Awesome CDN link to index.html head
-- [x] Add Facebook icon to footer social icons
-- [ ] Identify the issue with class "cta btn1"
-- [ ] Fix the CSS for .cta.btn1
-- [ ] Test the fix

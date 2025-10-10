@@ -417,3 +417,227 @@ nav a {
   font-weight: bold;
   filter: brightness(0) invert(1);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .nav-buttons {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-preview video {
+    max-width: 100%;
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .feature {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .roadmap {
+    padding: 2rem 1.5rem;
+  }
+
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phase {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .join-early {
+    padding: 1.5rem;
+  }
+
+  .faq {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-brand .logo {
+    justify-content: center;
+  }
+
+  .footer-links,
+  .footer-newsletter,
+  .footer-social {
+    text-align: center;
+  }
+
+  .footer-social .icons {
+    justify-content: center;
+  }
+
+  .footer-newsletter form {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo .icon img {
+    height: 40px;
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 0 0.25rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .cta-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .features {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature p {
+    font-size: 0.95rem;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .roadmap h2 {
+    font-size: 1.5rem;
+  }
+
+  .phase h3 {
+    font-size: 1.1rem;
+  }
+
+  .join-early h3 {
+    font-size: 1.2rem;
+  }
+
+  .faq h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-list details {
+    padding: 0.75rem;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.2rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4,
+  .footer-social h4 {
+    font-size: 1rem;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter button {
+    align-self: center;
+  }
+}
