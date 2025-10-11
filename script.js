@@ -30,11 +30,43 @@ navLinks.forEach(link => {
 
 
 
+// Section templates
+const sectionTemplates = {
+  "Title & Description": `# Project Title\n\nBrief description of the project.\n\n## Table of Contents\n\n- [Features](#features)\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contributing](#contributing)\n- [License](#license)\n`,
+  "Features": `## Features\n\n- Feature 1: Description\n- Feature 2: Description\n- Feature 3: Description\n\n`,
+  "Installation": `## Installation\n\n### Prerequisites\n\n- Requirement 1\n- Requirement 2\n\n### Steps\n\n\`\`\`bash\n# Clone the repository\ngit clone https://github.com/username/repo.git\n\n# Navigate to the directory\ncd repo\n\n# Install dependencies\nnpm install\n\`\`\`\n\n`,
+  "Usage": `## Usage\n\n\`\`\`javascript\n// Example code\nconst example = new Example();\nexample.run();\n\`\`\`\n\n`,
+  "Contributing": `## Contributing\n\n1. Fork the repository\n2. Create a feature branch (\`git checkout -b feature/AmazingFeature\`)\n3. Commit your changes (\`git commit -m 'Add some AmazingFeature'\`)\n4. Push to the branch (\`git push origin feature/AmazingFeature\`)\n5. Open a Pull Request\n\n`,
+  "Acknowledgements": `## Acknowledgements\n\n- Thanks to [Contributor](https://github.com/contributor)\n- Inspired by [Project](https://github.com/project)\n\n`,
+  "License": `## License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n`,
+  "Demo": `## Demo\n\nCheck out the live demo [here](https://demo-link.com).\n\n![Demo Screenshot](demo-screenshot.png)\n\n`,
+  "Documentation": `## Documentation\n\nFull documentation is available at [docs](https://docs-link.com).\n\n`,
+  "Authors": `## Authors\n\n- **Author Name** - *Role* - [GitHub](https://github.com/author)\n\n`,
+  "Appendix": `## Appendix\n\nAdditional information or references.\n\n`,
+  "Reference": `## Reference\n\n- [Reference 1](link)\n- [Reference 2](link)\n\n`
+};
+
 // Ensure only one sidebar item is active at a time
 document.querySelectorAll(".sidebar ul li").forEach(item => {
   item.addEventListener("click", () => {
     document.querySelectorAll(".sidebar ul li").forEach(li => li.classList.remove("active"));
     item.classList.add("active");
+
+    const sectionText = item.textContent.trim();
+    const readmeEditor = document.getElementById("readmeEditor");
+    if (sectionTemplates[sectionText]) {
+      readmeEditor.value += sectionTemplates[sectionText];
+      const readmePreview = document.getElementById("readmePreview");
+      readmePreview.innerHTML = marked.parse(readmeEditor.value);
+    } else if (sectionText === "+ Custom Section") {
+      const customName = prompt("Enter custom section name:");
+      if (customName) {
+        const template = `## ${customName}\n\nAdd content here.\n\n`;
+        readmeEditor.value += template;
+        const readmePreview = document.getElementById("readmePreview");
+        readmePreview.innerHTML = marked.parse(readmeEditor.value);
+      }
+    }
   });
 
   item.addEventListener("dblclick", () => {
@@ -63,7 +95,12 @@ function parseRepoURL(url) {
 // Fetch Repo Metadata
 async function fetchRepoData(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-  if (!res.ok) throw new Error("Repo not found or inaccessible");
+  if (!res.ok) {
+    if (res.status === 404) throw new Error("Repository not found. Please check the URL.");
+    if (res.status === 403) throw new Error("Access forbidden. The repository might be private or you are rate limited.");
+    if (res.status === 422) throw new Error("Invalid repository URL.");
+    throw new Error(`Failed to fetch repo data: ${res.status} ${res.statusText}`);
+  }
   const data = await res.json();
   console.log("Repo metadata fetched successfully");
   return data;
@@ -72,7 +109,11 @@ async function fetchRepoData(owner, repo) {
 // Fetch Repo File List
 async function fetchRepoFiles(owner, repo) {
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents`);
-  if (!res.ok) return [];
+  if (!res.ok) {
+    if (res.status === 404) return []; // No contents or not found
+    if (res.status === 403) throw new Error("Access forbidden for file list.");
+    throw new Error(`Failed to fetch file list: ${res.status} ${res.statusText}`);
+  }
   const files = await res.json();
   console.log("Repo file list loaded:", files.map(f => f.name));
   return files.map(f => f.name);
@@ -215,7 +256,7 @@ Feel free to reach out for support or collaboration opportunities! 📬
         toggleButtons();
         console.log(" README generated and previewed!");
       } catch (err) {
-        alert(" Could not fetch repo data. Try a public repo.");
+        alert(err.message);
         console.error("Error:", err.message);
       }
     };

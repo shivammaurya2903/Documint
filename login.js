@@ -8,26 +8,43 @@ function validateName(name) {
   return name.trim().length > 0 && /^[a-zA-Z\s]+$/.test(name);
 }
 
+
+
 // All event listeners
 document.addEventListener('DOMContentLoaded', function() {
   const loginForm = document.querySelector('form');
-  if (loginForm && window.location.pathname.includes('login.html')) {
-    loginForm.addEventListener('submit', function(e) {
-      const emailInput = document.querySelector('input[type="email"]');
-      const email = emailInput.value.trim();
 
-      if (!validateEmail(email)) {
+  // Form validation (only on login page)
+  if (window.location.pathname.includes('login.html')) {
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Please enter a valid email address.');
-        emailInput.focus();
-        return false;
-      }
-    });
+        const emailInput = document.querySelector('input[type="email"]');
+        const passwordInput = document.querySelector('input[type="password"]');
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!validateEmail(email)) {
+          alert('Please enter a valid email address.');
+          emailInput.focus();
+          return;
+        }
+        if (!password) {
+          alert('Please enter your password.');
+          passwordInput.focus();
+          return;
+        }
+        // simulate success
+        alert('Login successful!');
+        window.location.href = 'home.html';
+      });
+    }
   }
 
   // Signup form validation
   if (loginForm && window.location.pathname.includes('signup.html')) {
     loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
       const nameInput = document.querySelector('input[type="text"]');
       const emailInput = document.querySelector('input[type="email"]');
       const passwordInputs = document.querySelectorAll('input[type="password"]');
@@ -37,25 +54,26 @@ document.addEventListener('DOMContentLoaded', function() {
       const email = emailInput.value.trim();
 
       if (!validateName(name)) {
-        e.preventDefault();
         alert('Please enter a valid name (letters and spaces only).');
         nameInput.focus();
-        return false;
+        return;
       }
 
       if (!validateEmail(email)) {
-        e.preventDefault();
         alert('Please enter a valid email address.');
         emailInput.focus();
-        return false;
+        return;
       }
 
       if (password !== confirmPassword) {
-        e.preventDefault();
         alert('Passwords do not match. Please try again.');
         passwordInputs[0].focus();
-        return false;
+        return;
       }
+
+      // simulate success
+      alert('Signup successful!');
+      window.location.href = 'home.html';
     });
   }
 
@@ -73,4 +91,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Apple button
+  const appleButton = document.querySelector('.apple');
+  if (appleButton) {
+    appleButton.addEventListener('click', function() {
+      alert('Apple login not implemented yet.');
+    });
+  }
 });
+
+

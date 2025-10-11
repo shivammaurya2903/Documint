@@ -16,9 +16,9 @@
       <h1>DocuMint</h1>
     </div>
     <nav>
-      <a href="#"><span class="nav-icon"></span>Features</a>
-      <a href="#"><span class="nav-icon"></span>Pricing</a>
-      <a href="#"><span class="nav-icon"></span>FAQ</a>
+      <a href="#features"><span class="nav-icon"><i class="fas fa-star"></i></span>Features</a>
+      <a href="#"><span class="nav-icon"><i class="fa-solid fa-dollar-sign"></i></span>Pricing</a>
+      <a href="#faq"><span class="nav-icon"><i class="fas fa-question-circle"></i></span>FAQ</a>
     </nav>
     <div class="nav-buttons">
       <a href="login.html" class="outline-btn">Log In</a>
@@ -35,11 +35,11 @@
       <small>Free during beta. No credit card required.</small>
     </div>
     <div class="hero-preview">
-      <video src="images/promo-video.mp4" controls muted loop poster="images/preview.png" onmouseover="this.play()" onmouseleave="this.pause()"></video>
+      <video src="images/promo-video.mp4" controls muted loop poster="images/preview.png" preload="metadata" onmouseover="this.play()" onmouseleave="this.pause()"></video>
     </div>
   </section>
 
-  <section class="features">
+  <section id="features" class="features">
     <div class="feature">
       <span class="feature-icon"></span><h3> Compatible with All Public GitHub Repos</h3>
       <p>Connect and generate documentation for any public repository with ease.</p>
@@ -81,8 +81,10 @@
     <a href="signup.html" class="cta-btn">Create Account →</a>
   </div>
 </section>
+
+
 <!--  FAQ Section -->
-<section class="faq">
+<section id="faq" class="faq">
   <h2><span class="highlight">Questions?</span> Look here.</h2>
 
   <div class="faq-list">
@@ -125,7 +127,7 @@
     <!-- Logo & Tagline -->
     <div class="footer-brand">
       <div class="logo">
-        <span class="icon"><img src="images/logo.png" alt=""></span>
+        <span class="icon"><img src="images/logo.png" alt="DocuMint Logo"></span>
         <h2>DocuMint</h2>
       </div>
       <p>Smarter documentation for modern developers.</p>
@@ -136,7 +138,6 @@
       <h4>Explore</h4>
       <ul>
         <li><a href="#">Features</a></li>
-        <li><a href="#">Pricing</a></li>
         <li><a href="#">Roadmap</a></li>
         <li><a href="#">FAQ</a></li>
       </ul>

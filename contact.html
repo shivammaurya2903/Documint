@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact DocuMint</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon"><img src="images/logo-b.png" alt="DocuMint Logo"></span>
+      <h1>DocuMint</h1>
+    </div>
+    <nav>
+      <a href="index.html"><span class="nav-icon"><i class="fas fa-home"></i></span>Dashboard</a>
+      <a href="#features"><span class="nav-icon"><i class="fas fa-star"></i></span>Features</a>
+      <a href="#"><span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>Pricing</a>
+      <a href="#faq"><span class="nav-icon"><i class="fas fa-question-circle"></i></span>FAQ</a>
+    </nav>
+    <div class="nav-buttons">
+      <a href="login.html" class="outline-btn">Log In</a>
+      <a href="signup.html" class="filled-btn">Get Started</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Contact Us</h2>
+      <p>Have questions or feedback? We'd love to hear from you!</p>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <h2>Get in Touch</h2>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="icon"><img src="images/logo.png" alt="DocuMint Logo"></span>
+          <h2>DocuMint</h2>
+        </div>
+        <p>Smarter documentation for modern developers.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Stay Updated</h4>
+        <form>
+          <input type="email" placeholder="Your email" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p>Get product updates and launch news.</p>
+      </div>
+
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <div class="icons">
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <ul class="legal">
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 DocuMint. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

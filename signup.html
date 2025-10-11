@@ -20,21 +20,22 @@
         <h2>Create Your Account</h2>
         <p>Join DocuMint and start generating beautiful documentation automatically.</p>
 
-        <form>
+        <form action="script.php" method="post">
+          <input type="hidden" name="action" value="signup" />
+
           <label>Full Name</label>
-          <input type="text" placeholder="Enter your name" />
+          <input type="text" name="name" placeholder="Enter your name" required />
 
           <label>Email</label>
-          <input type="email" placeholder="Enter your email" />
+          <input type="email" name="email" placeholder="Enter your email" required />
 
           <label>Password</label>
-          <input type="password" placeholder="Create a password" />
+          <input type="password" name="password" placeholder="Create a password" required />
 
           <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm your password" />
+          <input type="password" name="confirm_password" placeholder="Confirm your password" required />
 
-          <button type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
-        </form>
+          <button id="submitBtn" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
         <p class="signup">Already have an account? <a href="login.html">Sign In</a></p>
       </div>
 
@@ -53,6 +54,8 @@
       </div>
     </div>
   </div>
+
+  
   <script src="login.js"></script>
 </body>
 </html>
