@@ -1,0 +1,1385 @@
+/* Responsive Styles for DocuMint */
+/* Consolidated media queries from all CSS files */
+
+/* Small Laptops (1024px and below) */
+@media (max-width: 1024px) {
+  /* From style.css */
+  .navbar {
+    padding: 1.5rem 2rem;
+  }
+
+  .hero {
+    padding: 3rem 2rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-preview video {
+    max-width: 400px;
+  }
+
+  .features {
+    padding: 2rem;
+  }
+
+  .feature {
+    max-width: 250px;
+  }
+
+  .timeline {
+    gap: 1.5rem;
+  }
+
+  .phase {
+    max-width: 250px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* From home.css */
+  .sidebar {
+    width: 200px;
+  }
+
+  .container {
+    padding: 0.75rem;
+  }
+
+  .editor-container {
+    gap: 0.75rem;
+  }
+
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .input-button-group {
+    gap: 0.4rem;
+  }
+
+  #repoInput {
+    max-width: 70%;
+  }
+
+  /* From login.css and signup.css */
+  .main {
+    width: 90vw;
+    padding: 1.5rem;
+  }
+
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+
+  .login-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .promo-panel h2 {
+    font-size: 1.6rem;
+  }
+
+  form input {
+    padding: 0.6rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.6rem;
+  }
+
+  /* From about.css */
+  .about-main {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .footer-content {
+    gap: 1.5rem;
+  }
+
+  .nav-buttons {
+    gap: 1.5rem;
+  }
+
+  /* From contact.css */
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .contact-form {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.6rem;
+  }
+
+  .contact-form button {
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  /* From style.css */
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .nav-buttons {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-preview video {
+    max-width: 100%;
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .feature {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .roadmap {
+    padding: 2rem 1.5rem;
+  }
+
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phase {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .join-early {
+    padding: 1.5rem;
+  }
+
+  .faq {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-brand .logo {
+    justify-content: center;
+  }
+
+  .footer-links,
+  .footer-newsletter,
+  .footer-social {
+    text-align: center;
+  }
+
+  .footer-social .icons {
+    justify-content: center;
+  }
+
+  .footer-newsletter form {
+    justify-content: center;
+  }
+
+  /* From home.css */
+  .navbar {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: column;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+
+  textarea {
+    font-size: 0.95rem;
+  }
+
+  .markdown-box {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .hero input {
+    width: 100%;
+  }
+
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .editor-section, .preview-section {
+    height: 50vh;
+  }
+
+  #generateBtnFab {
+    display: none;
+  }
+
+  .fab {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .logo .icon img {
+    height: 50px;
+    width: 60px;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .input-button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  #repoInput {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* From login.css and signup.css */
+  body {
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  .main {
+    width: 100vw;
+    height: auto;
+    min-height: 80vh;
+    padding: 1rem;
+    box-shadow: none;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-panel, .promo-panel {
+    flex: none;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .promo-panel {
+    margin-top: 1rem;
+    height: auto;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .promo-panel h2 {
+    font-size: 1.5rem;
+  }
+
+  form input {
+    padding: 0.6rem;
+  }
+
+  button[type="submit"], .google, .apple, .join-us button {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .signup {
+    font-size: 0.8rem;
+  }
+
+  /* From about.css */
+  .about-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .about-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-container p,
+  .about-container ul {
+    font-size: 0.95rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-links, .footer-contact {
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 50px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.4rem;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.75rem;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .about-main {
+    padding: 2rem 1rem;
+  }
+
+  .about-main h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-main p {
+    font-size: 1rem;
+  }
+
+  .about-main ul li {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .about-documint {
+    padding: 1.5rem;
+  }
+
+  .about-documint h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-documint h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-documint p {
+    font-size: 1rem;
+  }
+
+  .about-documint ul li {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .thank-you {
+    padding: 1.5rem;
+  }
+
+  .thank-you h2 {
+    font-size: 1.4rem;
+  }
+
+  .thank-you p {
+    font-size: 1rem;
+  }
+
+  .creator {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .creator h2 {
+    font-size: 1.4rem;
+  }
+
+  .creator p {
+    font-size: 1rem;
+  }
+
+  .creator a {
+    font-size: 1.2rem;
+  }
+
+  .footer-links, .footer-contact {
+    text-align: center;
+  }
+
+  /* From contact.css */
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .contact-form {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  /* From style.css */
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo .icon img {
+    height: 40px;
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 0 0.25rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .cta-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .features {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature p {
+    font-size: 0.95rem;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .roadmap h2 {
+    font-size: 1.5rem;
+  }
+
+  .phase h3 {
+    font-size: 1.1rem;
+  }
+
+  .join-early h3 {
+    font-size: 1.2rem;
+  }
+
+  .faq h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-list details {
+    padding: 0.75rem;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.2rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4,
+  .footer-social h4 {
+    font-size: 1rem;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter button {
+    align-self: center;
+  }
+
+  /* From home.css */
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo .icon img {
+    height: 40px;
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 0.25rem;
+  }
+
+  .editor-header h2 {
+    font-size: 1rem;
+  }
+
+  .input-button-group {
+    gap: 0.25rem;
+  }
+
+  #repoInput {
+    font-size: 0.9rem;
+  }
+
+  #generateBtn, #downloadBtn, #clearBtn, #copyBtn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .editor-section h3, .preview-section h3 {
+    font-size: 1rem;
+  }
+
+  #readmeEditor, #readmePreview {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  footer {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .fab {
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* From login.css and signup.css */
+  .main {
+    padding: 0.5rem;
+  }
+
+  .login-panel, .promo-panel {
+    padding: 1rem;
+  }
+
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+
+  .login-panel h2 {
+    font-size: 1.2rem;
+  }
+
+  .promo-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  form input {
+    padding: 0.5rem;
+  }
+
+  button[type="submit"], .google, .apple, .join-us button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* From about.css */
+  .about-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .about-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-container p,
+  .about-container ul {
+    font-size: 0.85rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-links, .footer-contact {
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 45px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .about-main {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .about-main h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-main p {
+    font-size: 0.9rem;
+  }
+
+  .about-main ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .about-documint {
+    padding: 1.25rem;
+  }
+
+  .about-documint h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-documint h3 {
+    font-size: 1.1rem;
+  }
+
+  .about-documint p {
+    font-size: 0.9rem;
+  }
+
+  .about-documint ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .thank-you {
+    padding: 1.25rem;
+  }
+
+  .thank-you h2 {
+    font-size: 1.2rem;
+  }
+
+  .thank-you p {
+    font-size: 0.9rem;
+  }
+
+  .creator {
+    padding: 1.25rem;
+    margin: 0.75rem;
+  }
+
+  .creator h2 {
+    font-size: 1.2rem;
+  }
+
+  .creator p {
+    font-size: 0.9rem;
+  }
+
+  .creator a {
+    font-size: 1.1rem;
+  }
+
+  .footer-links, .footer-contact {
+    text-align: center;
+  }
+
+  /* From contact.css */
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .contact-form {
+    margin: 1.5rem 0.5rem;
+    padding: 1rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-form button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile (414px and below) */
+@media (max-width: 414px) {
+  /* From style.css */
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .logo .icon img {
+    height: 35px;
+    width: 50px;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    margin: 0 0.2rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .cta-btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .features {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .feature h3 {
+    font-size: 1rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+  }
+
+  .cta h2 {
+    font-size: 1.4rem;
+  }
+
+  .roadmap h2 {
+    font-size: 1.4rem;
+  }
+
+  .phase h3 {
+    font-size: 1rem;
+  }
+
+  .join-early {
+    padding: 1rem;
+  }
+
+  .join-early h3 {
+    font-size: 1.1rem;
+  }
+
+  .faq h2 {
+    font-size: 1.4rem;
+  }
+
+  .faq-list details {
+    padding: 0.6rem;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.1rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4,
+  .footer-social h4 {
+    font-size: 0.95rem;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter button {
+    align-self: center;
+  }
+
+  /* From home.css */
+  .navbar {
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: column;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+  }
+
+  .container {
+    padding: 0.25rem;
+  }
+
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  .markdown-box {
+    font-size: 0.85rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .hero input {
+    width: 100%;
+  }
+
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .editor-section, .preview-section {
+    height: 45vh;
+  }
+
+  #generateBtnFab {
+    display: none;
+  }
+
+  .fab {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .logo .icon img {
+    height: 35px;
+    width: 45px;
+  }
+
+  .hero {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  #repoInput {
+    width: 100%;
+    max-width: none;
+    font-size: 0.85rem;
+  }
+
+  #generateBtn, #downloadBtn, #clearBtn, #copyBtn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .editor-header h2 {
+    font-size: 0.9rem;
+  }
+
+  .editor-section h3, .preview-section h3 {
+    font-size: 0.95rem;
+  }
+
+  #readmeEditor, #readmePreview {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+
+  footer {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .fab {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  /* From login.css and signup.css */
+  body {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .main {
+    padding: 0.25rem;
+    width: 100vw;
+    height: auto;
+    min-height: 75vh;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-panel, .promo-panel {
+    flex: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+
+  .promo-panel {
+    margin-top: 0.75rem;
+    height: auto;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .login-panel h2 {
+    font-size: 1.1rem;
+  }
+
+  .promo-panel h2 {
+    font-size: 1.2rem;
+  }
+
+  form input {
+    padding: 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  button[type="submit"], .google, .apple, .join-us button {
+    padding: 0.45rem;
+    font-size: 0.8rem;
+  }
+
+  .signup {
+    font-size: 0.8rem;
+  }
+
+  .promo-panel p {
+    font-size: 0.85rem;
+  }
+
+  blockquote {
+    font-size: 0.9rem;
+  }
+
+  .join-us p {
+    font-size: 0.75rem;
+  }
+
+  /* From about.css */
+  .about-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .about-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-container p,
+  .about-container ul {
+    font-size: 0.85rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-links, .footer-contact {
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 45px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .about-main {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .about-main h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-main p {
+    font-size: 0.9rem;
+  }
+
+  .about-main ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .about-documint {
+    padding: 1.25rem;
+  }
+
+  .about-documint h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-documint h3 {
+    font-size: 1.1rem;
+  }
+
+  .about-documint p {
+    font-size: 0.9rem;
+  }
+
+  .about-documint ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .thank-you {
+    padding: 1.25rem;
+  }
+
+  .thank-you h2 {
+    font-size: 1.2rem;
+  }
+
+  .thank-you p {
+    font-size: 0.9rem;
+  }
+
+  .creator {
+    padding: 1.25rem;
+    margin: 0.75rem;
+  }
+
+  .creator h2 {
+    font-size: 1.2rem;
+  }
+
+  .creator p {
+    font-size: 0.9rem;
+  }
+
+  .creator a {
+    font-size: 1.1rem;
+  }
+
+  .footer-links, .footer-contact {
+    text-align: center;
+  }
+
+  /* From contact.css */
+  .hero {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    margin: 1.25rem 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  .contact-form button {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
