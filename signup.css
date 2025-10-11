@@ -322,3 +322,72 @@ blockquote footer {
     font-size: 0.8rem;
   }
 }
+
+@media screen and (max-width: 414px) {
+  body {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .main {
+    padding: 0.25rem;
+    width: 100vw;
+    height: auto;
+    min-height: 75vh;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-panel, .promo-panel {
+    flex: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+
+  .promo-panel {
+    margin-top: 0.75rem;
+    height: auto;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .login-panel h2 {
+    font-size: 1.1rem;
+  }
+
+  .promo-panel h2 {
+    font-size: 1.2rem;
+  }
+
+  form input {
+    padding: 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  button[type="submit"], .join-us button {
+    padding: 0.45rem;
+    font-size: 0.8rem;
+  }
+
+  .signup {
+    font-size: 0.8rem;
+  }
+
+  .promo-panel p {
+    font-size: 0.85rem;
+  }
+
+  blockquote {
+    font-size: 0.9rem;
+  }
+
+  .join-us p {
+    font-size: 0.75rem;
+  }
+}

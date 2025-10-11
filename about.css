@@ -4,9 +4,10 @@
   padding: 0;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
+  scrollbar-color: #023653 #ccc;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-color: white #88B4BE;
+
 }
 /* 🌈 Background Gradient */
 body {
@@ -399,4 +400,129 @@ body {
     text-align: center;
   }
 
+}
+
+@media screen and (max-width: 414px) {
+  .about-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .about-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-container p,
+  .about-container ul {
+    font-size: 0.85rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-links, .footer-contact {
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 45px;
+  }
+
+  .footer-logo h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .about-main {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .about-main h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-main p {
+    font-size: 0.9rem;
+  }
+
+  .about-main ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .about-documint {
+    padding: 1.25rem;
+  }
+
+  .about-documint h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-documint h3 {
+    font-size: 1.1rem;
+  }
+
+  .about-documint p {
+    font-size: 0.9rem;
+  }
+
+  .about-documint ul li {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .thank-you {
+    padding: 1.25rem;
+  }
+
+  .thank-you h2 {
+    font-size: 1.2rem;
+  }
+
+  .thank-you p {
+    font-size: 0.9rem;
+  }
+
+  .creator {
+    padding: 1.25rem;
+    margin: 0.75rem;
+  }
+
+  .creator h2 {
+    font-size: 1.2rem;
+  }
+
+  .creator p {
+    font-size: 0.9rem;
+  }
+
+  .creator a {
+    font-size: 1.1rem;
+  }
+
+  .footer-links, .footer-contact {
+    text-align: center;
+  }
 }

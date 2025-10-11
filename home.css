@@ -516,6 +516,134 @@ footer {
     font-size: 0.9rem;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .navbar {
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: column;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+  }
+
+  .container {
+    padding: 0.25rem;
+  }
+
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  .markdown-box {
+    font-size: 0.85rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .hero input {
+    width: 100%;
+  }
+
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .editor-section, .preview-section {
+    height: 45vh;
+  }
+
+  #generateBtnFab {
+    display: none;
+  }
+
+  .fab {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .logo .icon img {
+    height: 35px;
+    width: 45px;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  #repoInput {
+    width: 100%;
+    max-width: none;
+    font-size: 0.85rem;
+  }
+
+  #generateBtn, #downloadBtn, #clearBtn, #copyBtn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .editor-header h2 {
+    font-size: 0.9rem;
+  }
+
+  .editor-section h3, .preview-section h3 {
+    font-size: 0.95rem;
+  }
+
+  #readmeEditor, #readmePreview {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+
+  footer {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .fab {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}
 @media screen and (max-width: 768px) {
   .main {
     padding: 1rem;

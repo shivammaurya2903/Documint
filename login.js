@@ -8,6 +8,9 @@ function validateName(name) {
   return name.trim().length > 0 && /^[a-zA-Z\s]+$/.test(name);
 }
 
+const adminUsername = 'admin@gmail.com';
+const adminPassword = '123456';
+
 
 
 // All event listeners
@@ -34,9 +37,14 @@ document.addEventListener('DOMContentLoaded', function() {
           passwordInput.focus();
           return;
         }
-        // simulate success
-        alert('Login successful!');
-        window.location.href = 'home.html';
+
+        // Check credentials
+        if (email === adminUsername && password === adminPassword) {
+          alert('Login successful!');
+          window.location.href = 'home.html';
+        } else {
+          alert('Invalid credentials.');
+        }
       });
     }
   }
@@ -71,9 +79,31 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // simulate success
-      alert('Signup successful!');
-      window.location.href = 'home.html';
+      // Send POST request to script.php
+      const formData = new FormData();
+      formData.append('action', 'signup');
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('confirm_password', confirmPassword);
+
+      fetch('script.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+          window.location.href = data.redirect;
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      });
     });
   }
 
