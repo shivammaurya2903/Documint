@@ -79,31 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Send POST request to script.php
-      const formData = new FormData();
-      formData.append('action', 'signup');
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('password', password);
-      formData.append('confirm_password', confirmPassword);
-
-      fetch('script.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          alert(data.message);
-          window.location.href = data.redirect;
-        } else {
-          alert(data.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-      });
+      // Simulate signup success
+      alert('Signup successful! Redirecting to login page.');
+      window.location.href = 'login.html';
     });
   }
 
@@ -121,6 +99,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Google button
+  const googleButton = document.querySelector('.google');
+  if (googleButton) {
+    googleButton.addEventListener('click', function() {
+      alert('Google login not implemented yet.');
+    });
+  }
 
   // Apple button
   const appleButton = document.querySelector('.apple');
