@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $log_stmt->execute();
         $log_stmt->close();
 
-        header('Location: home.html');
+        echo "<script>window.location.href='home.html';</script>";
         exit();
     }
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $log_stmt->execute();
             $log_stmt->close();
 
-            header('Location: home.html');
+            echo "<script>window.location.href='home.html';</script>";
             exit();
         } else {
             echo "<script>alert('Incorrect password.'); window.location.href='login.html';</script>";

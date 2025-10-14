@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
 
     if ($password !== $confirm_password) {
-        echo "Passwords do not match.";
+        echo "<script>alert('Passwords do not match.'); window.location.href='signup.html';</script>";
         exit();
     }
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "Email already exists.";
+        echo "<script>alert('Email already exists.'); window.location.href='signup.html';</script>";
         $stmt->close();
         $conn->close();
         exit();
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_id'] = $conn->insert_id;
         $_SESSION['user_name'] = $name;
 
-        header('Location: home.html');
+        echo "<script>window.location.href='home.html';</script>";
         exit();
     } else {
         echo "Error: " . $stmt->error;

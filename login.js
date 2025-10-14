@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.location.pathname.includes('login.html')) {
     if (loginForm) {
       loginForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+
         const emailInput = document.querySelector('input[type="email"]');
         const passwordInput = document.querySelector('input[type="password"]');
         const email = emailInput.value.trim();
@@ -29,17 +31,42 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateEmail(email)) {
           alert('Please enter a valid email address.');
           emailInput.focus();
-          e.preventDefault();
           return;
         }
         if (!password) {
           alert('Please enter your password.');
           passwordInput.focus();
-          e.preventDefault();
           return;
         }
 
-        // Allow form to submit to PHP
+        // Submit form via fetch to handle response properly
+        const formData = new FormData(loginForm);
+        fetch('login.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+          if (data.includes('<script>')) {
+            // Extract and execute the script content in global context
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+            const scriptElement = tempDiv.querySelector('script');
+            if (scriptElement) {
+              const script = document.createElement('script');
+              script.textContent = scriptElement.textContent;
+              document.head.appendChild(script);
+              document.head.removeChild(script); // Clean up
+            }
+          } else {
+            alert('Server returned invalid response. Check console for details.');
+            console.log('Response:', data);
+          }
+        })
+        .catch(error => {
+          alert('An error occurred. Please try again.');
+          console.error('Error:', error);
+        });
       });
     }
   }
@@ -47,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Signup form validation
   if (loginForm && window.location.pathname.includes('signup.html')) {
     loginForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
       const nameInput = document.querySelector('input[type="text"]');
       const emailInput = document.querySelector('input[type="email"]');
       const passwordInputs = document.querySelectorAll('input[type="password"]');
@@ -58,25 +87,49 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!validateName(name)) {
         alert('Please enter a valid name (letters and spaces only).');
         nameInput.focus();
-        e.preventDefault();
         return;
       }
 
       if (!validateEmail(email)) {
         alert('Please enter a valid email address.');
         emailInput.focus();
-        e.preventDefault();
         return;
       }
 
       if (password !== confirmPassword) {
         alert('Passwords do not match. Please try again.');
         passwordInputs[0].focus();
-        e.preventDefault();
         return;
       }
 
-      // Allow form to submit to PHP
+      // Submit form via fetch to handle response properly
+      const formData = new FormData(loginForm);
+      fetch('signup.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+        .then(data => {
+          if (data.includes('<script>')) {
+            // Extract and execute the script content in global context
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+            const scriptElement = tempDiv.querySelector('script');
+            if (scriptElement) {
+              const script = document.createElement('script');
+              script.textContent = scriptElement.textContent;
+              document.head.appendChild(script);
+              document.head.removeChild(script); // Clean up
+            }
+          } else {
+            alert('Server returned invalid response. Check console for details.');
+            console.log('Response:', data);
+          }
+        })
+      .catch(error => {
+        alert('An error occurred. Please try again.');
+        console.error('Error:', error);
+      });
     });
   }
 
