@@ -51,10 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: home.html');
             exit();
         } else {
-            echo "Invalid password.";
+            echo "<script>alert('Incorrect password.'); window.location.href='login.html';</script>";
+            exit();
         }
     } else {
-        echo "No user found with that email.";
+        echo "<script>alert('No user found with that email.'); window.location.href='login.html';</script>";
+        exit();
     }
 
     $stmt->close();
