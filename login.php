@@ -10,6 +10,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($email === 'admin@gmail.com' && $password === '123456') {
         $_SESSION['user_id'] = 1;
         $_SESSION['user_name'] = 'Admin User';
+
+        // Log the admin login
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+        $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        $log_sql = "INSERT INTO logins (user_id, email, ip, user_agent) VALUES (?, ?, ?, ?)";
+        $log_stmt = $conn->prepare($log_sql);
+        $log_stmt->bind_param("isss", $_SESSION['user_id'], $email, $ip, $user_agent);
+        $log_stmt->execute();
+        $log_stmt->close();
+
         header('Location: home.html');
         exit();
     }
@@ -28,6 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $hashed_password)) {
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name'] = $name;
+
+            // Log the login
+            $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+            $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+            $log_sql = "INSERT INTO logins (user_id, email, ip, user_agent) VALUES (?, ?, ?, ?)";
+            $log_stmt = $conn->prepare($log_sql);
+            $log_stmt->bind_param("isss", $id, $email, $ip, $user_agent);
+            $log_stmt->execute();
+            $log_stmt->close();
+
             header('Location: home.html');
             exit();
         } else {
