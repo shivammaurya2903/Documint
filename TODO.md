@@ -1,7 +1,7 @@
-# Add Database Using XAMPP
+# TODO: Fix Login and Signup Errors
 
-- [x] Create db.php for database connection
-- [x] Create create_tables.php to set up 'users' table (id, name, email, password)
-- [x] Create signup.php to handle signup form and insert users
-- [x] Create login.php to handle login and verify credentials
-- [x] Update TODO.md with completion status
+- [x] Edit login.js to remove form submission interception and allow valid submissions to proceed to PHP scripts while keeping validation.
+- [x] Run create_db.php to ensure database exists.
+- [x] Run create_tables.php to ensure users table exists.
+- [x] Test signup functionality by submitting the form and checking database.
+- [x] Test login functionality by submitting the form and verifying session.

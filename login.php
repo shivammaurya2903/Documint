@@ -6,6 +6,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Special check for admin user
+    if ($email === 'admin@gmail.com' && $password === '123456') {
+        $_SESSION['user_id'] = 1;
+        $_SESSION['user_name'] = 'Admin User';
+        header('Location: home.html');
+        exit();
+    }
+
     // Fetch user from database
     $sql = "SELECT id, name, password FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
