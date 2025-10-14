@@ -36,6 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $name, $email, $hashed_password);
 
     if ($stmt->execute()) {
+        // Start session and set user variables
+        session_start();
+        $_SESSION['user_id'] = $conn->insert_id;
+        $_SESSION['user_name'] = $name;
+
         header('Location: home.html');
         exit();
     } else {

@@ -5,3 +5,6 @@
 - [x] Run create_tables.php to ensure users table exists.
 - [x] Test signup functionality by submitting the form and checking database.
 - [x] Test login functionality by submitting the form and verifying session.
+- [x] Fix signup.php to set session variables after successful user registration.
+- [x] Remove authentication bypass in login.js for "Get Started" buttons.
+- [x] Test the fixes by running the application (database setup completed, browser testing disabled).

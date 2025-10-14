@@ -84,14 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const getStartedButtons = document.querySelectorAll('.join-us button');
   getStartedButtons.forEach(button => {
     button.addEventListener('click', function() {
-      const emailInput = document.querySelector('input[type="email"]');
-      const passwordInput = document.querySelector('input[type="password"]');
-      if (!emailInput.value.trim() || !passwordInput.value.trim()) {
-        alert('please fill credentials');
-      } else {
-        alert('Welcome to DocuMint! Redirecting to the main page.');
-        window.location.href = 'home.html';
-      }
+      alert('Please sign in or sign up to get started.');
     });
   });
 
