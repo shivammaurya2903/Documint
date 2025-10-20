@@ -23,6 +23,8 @@ body {
   padding: 2rem;
   height: 80vh;
   width: 70vw;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,6 +42,7 @@ body {
   justify-content: center;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 /*  Login Panel */
