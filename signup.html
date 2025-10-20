@@ -24,15 +24,19 @@
 
           <label>Full Name</label>
           <input type="text" name="name" placeholder="Enter your name" required />
+          <div class="error" id="name-error"></div>
 
           <label>Email</label>
           <input type="email" name="email" placeholder="Enter your email" required />
+          <div class="error" id="email-error"></div>
 
           <label>Password</label>
           <input type="password" name="password" placeholder="Create a password" required />
+          <div class="error" id="password-error"></div>
 
           <label>Confirm Password</label>
           <input type="password" name="confirm_password" placeholder="Confirm your password" required />
+          <div class="error" id="confirm-password-error"></div>
 
           <button id="submitBtn" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
         </form>

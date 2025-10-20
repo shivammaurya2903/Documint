@@ -2,13 +2,15 @@
 session_start();
 include 'db.php';
 
+header('Content-Type: application/json');
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Step 1: Sanitize input
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
     if (empty($email) || empty($password)) {
-        echo "<script>alert('Email and password are required.'); window.location.href='login.html';</script>";
+        echo json_encode(['success' => false, 'errors' => ['general' => 'Email and password are required.']]);
         exit();
     }
 
@@ -16,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "SELECT id, name, password FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
-        die("Prepare failed: " . $conn->error);
+        echo json_encode(['success' => false, 'errors' => ['general' => 'Database error.']]);
+        exit();
     }
 
     $stmt->bind_param("s", $email);
@@ -46,15 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 error_log("Login log prepare failed: " . $conn->error);
             }
 
-            // Step 6: Redirect to home
-            header("Location: home.html");
+            // Step 6: Return success
+            echo json_encode(['success' => true, 'redirect' => 'home.html']);
             exit();
         } else {
-            echo "<script>alert('Incorrect password.'); window.location.href='login.html';</script>";
+            echo json_encode(['success' => false, 'errors' => ['password' => 'Incorrect password.']]);
             exit();
         }
     } else {
-        echo "<script>alert('No user found with that email.'); window.location.href='login.html';</script>";
+        echo json_encode(['success' => false, 'errors' => ['email' => 'No user found with that email.']]);
         exit();
     }
 

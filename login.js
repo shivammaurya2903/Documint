@@ -8,9 +8,6 @@ function validateName(name) {
   return name.trim().length > 0 && /^[a-zA-Z\s]+$/.test(name);
 }
 
-const adminUsername = 'admin@gmail.com';
-const adminPassword = '123456';
-
 
 
 // All event listeners
@@ -28,13 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
 
+        // Clear previous errors
+        document.getElementById('email-error').textContent = '';
+        document.getElementById('password-error').textContent = '';
+
         if (!validateEmail(email)) {
-          alert('Please enter a valid email address.');
+          document.getElementById('email-error').textContent = 'Please enter a valid email address.';
           emailInput.focus();
           return;
         }
         if (!password) {
-          alert('Please enter your password.');
+          document.getElementById('password-error').textContent = 'Please enter your password.';
           passwordInput.focus();
           return;
         }
@@ -45,22 +46,20 @@ document.addEventListener('DOMContentLoaded', function() {
           method: 'POST',
           body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-          if (data.includes('<script>')) {
-            // Extract and execute the script content in global context
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = data;
-            const scriptElement = tempDiv.querySelector('script');
-            if (scriptElement) {
-              const script = document.createElement('script');
-              script.textContent = scriptElement.textContent;
-              document.head.appendChild(script);
-              document.head.removeChild(script); // Clean up
-            }
+          if (data.success) {
+            window.location.href = data.redirect;
           } else {
-            alert('Server returned invalid response. Check console for details.');
-            console.log('Response:', data);
+            if (data.errors.email) {
+              document.getElementById('email-error').textContent = data.errors.email;
+            }
+            if (data.errors.password) {
+              document.getElementById('password-error').textContent = data.errors.password;
+            }
+            if (data.errors.general) {
+              alert(data.errors.general);
+            }
           }
         })
         .catch(error => {
@@ -84,20 +83,26 @@ document.addEventListener('DOMContentLoaded', function() {
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
 
+      // Clear previous errors
+      document.getElementById('name-error').textContent = '';
+      document.getElementById('email-error').textContent = '';
+      document.getElementById('password-error').textContent = '';
+      document.getElementById('confirm-password-error').textContent = '';
+
       if (!validateName(name)) {
-        alert('Please enter a valid name (letters and spaces only).');
+        document.getElementById('name-error').textContent = 'Please enter a valid name (letters and spaces only).';
         nameInput.focus();
         return;
       }
 
       if (!validateEmail(email)) {
-        alert('Please enter a valid email address.');
+        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
         emailInput.focus();
         return;
       }
 
       if (password !== confirmPassword) {
-        alert('Passwords do not match. Please try again.');
+        document.getElementById('confirm-password-error').textContent = 'Passwords do not match. Please try again.';
         passwordInputs[0].focus();
         return;
       }
@@ -108,22 +113,26 @@ document.addEventListener('DOMContentLoaded', function() {
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
+      .then(response => response.json())
         .then(data => {
-          if (data.includes('<script>')) {
-            // Extract and execute the script content in global context
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = data;
-            const scriptElement = tempDiv.querySelector('script');
-            if (scriptElement) {
-              const script = document.createElement('script');
-              script.textContent = scriptElement.textContent;
-              document.head.appendChild(script);
-              document.head.removeChild(script); // Clean up
-            }
+          if (data.success) {
+            window.location.href = data.redirect;
           } else {
-            alert('Server returned invalid response. Check console for details.');
-            console.log('Response:', data);
+            if (data.errors.name) {
+              document.getElementById('name-error').textContent = data.errors.name;
+            }
+            if (data.errors.email) {
+              document.getElementById('email-error').textContent = data.errors.email;
+            }
+            if (data.errors.password) {
+              document.getElementById('password-error').textContent = data.errors.password;
+            }
+            if (data.errors.confirm_password) {
+              document.getElementById('confirm-password-error').textContent = data.errors.confirm_password;
+            }
+            if (data.errors.general) {
+              alert(data.errors.general);
+            }
           }
         })
       .catch(error => {
