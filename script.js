@@ -94,29 +94,49 @@ function parseRepoURL(url) {
 
 // Fetch Repo Metadata
 async function fetchRepoData(owner, repo) {
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-  if (!res.ok) {
-    if (res.status === 404) throw new Error("Repository not found. Please check the URL.");
-    if (res.status === 403) throw new Error("Access forbidden. The repository might be private or you are rate limited.");
-    if (res.status === 422) throw new Error("Invalid repository URL.");
-    throw new Error(`Failed to fetch repo data: ${res.status} ${res.statusText}`);
+  if (!navigator.onLine) {
+    throw new Error("No internet connection. Please check your network and try again.");
   }
-  const data = await res.json();
-  console.log("Repo metadata fetched successfully");
-  return data;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+    if (!res.ok) {
+      if (res.status === 404) throw new Error("Repository not found. Please check the URL.");
+      if (res.status === 403) throw new Error("Access forbidden. The repository might be private or you are rate limited.");
+      if (res.status === 422) throw new Error("Invalid repository URL.");
+      throw new Error(`Failed to fetch repo data: ${res.status} ${res.statusText}`);
+    }
+    const data = await res.json();
+    console.log("Repo metadata fetched successfully");
+    return data;
+  } catch (error) {
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      throw new Error("Network error: Unable to connect to GitHub API. Please check your internet connection.");
+    }
+    throw error;
+  }
 }
 
 // Fetch Repo File List
 async function fetchRepoFiles(owner, repo) {
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents`);
-  if (!res.ok) {
-    if (res.status === 404) return []; // No contents or not found
-    if (res.status === 403) throw new Error("Access forbidden for file list.");
-    throw new Error(`Failed to fetch file list: ${res.status} ${res.statusText}`);
+  if (!navigator.onLine) {
+    throw new Error("No internet connection. Please check your network and try again.");
   }
-  const files = await res.json();
-  console.log("Repo file list loaded:", files.map(f => f.name));
-  return files.map(f => f.name);
+  try {
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents`);
+    if (!res.ok) {
+      if (res.status === 404) return []; // No contents or not found
+      if (res.status === 403) throw new Error("Access forbidden for file list.");
+      throw new Error(`Failed to fetch file list: ${res.status} ${res.statusText}`);
+    }
+    const files = await res.json();
+    console.log("Repo file list loaded:", files.map(f => f.name));
+    return files.map(f => f.name);
+  } catch (error) {
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      throw new Error("Network error: Unable to connect to GitHub API. Please check your internet connection.");
+    }
+    throw error;
+  }
 }
 
 function generateReadme(data, files) {
