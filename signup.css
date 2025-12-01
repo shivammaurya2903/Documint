@@ -1,4 +1,4 @@
-/* Base Reset */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +19,7 @@
 }
 
 body {
-  background: var(--light-bg); /* Light neutral background */
+  background: var(--light-bg);
   color: var(--text-dark);
   display: flex;
   justify-content: center;
@@ -43,7 +43,7 @@ body {
   animation: shadowPulse 3s ease-in-out infinite;
 }
 
-/* Outer Container */
+
 .container {
   display: flex;
   align-items: center;
@@ -53,7 +53,6 @@ body {
   overflow: hidden;
 }
 
-/*  Login Panel */
 .login-panel {
   flex: 1;
   padding: 2rem;

@@ -1,4 +1,4 @@
-/* Base Reset */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,7 +11,7 @@
 }
 
 body {
-  background: #EEEEEE; /* Light neutral background */
+  background: #EEEEEE;
   color: #000000;
   display: flex;
   justify-content: center;
@@ -35,7 +35,6 @@ body {
   animation: shadowPulse 3s ease-in-out infinite;
 }
 
-/* Outer Container */
 .container {
   display: flex;
   align-items: center;

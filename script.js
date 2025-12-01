@@ -120,93 +120,256 @@ async function fetchRepoFiles(owner, repo) {
 }
 
 function generateReadme(data, files) {
-  return `#  ${data.name}
+  // Detect Graphics
+  const bannerFile = files.find(f =>
+    /banner\.(png|jpg|jpeg|gif|svg)$/i.test(f)
+  );
 
-> **${data.description || "No description provided."}**
+  const gifBannerFile = files.find(f =>
+    /banner\.gif$/i.test(f)
+  );
+
+  const logoFile = files.find(f =>
+    /logo\.(png|jpg|jpeg|gif|svg)$/i.test(f)
+  );
+
+  // AI Logo fallback
+  const aiLogoURL =
+    "https://api.dicebear.com/7.x/shapes/svg?seed=" + encodeURIComponent(data.name);
+
+  const bannerPath = bannerFile ? `./${bannerFile}` : null;
+  const gifBannerPath = gifBannerFile ? `./${gifBannerFile}` : null;
+  const logoPath = logoFile ? `./${logoFile}` : aiLogoURL;
+
+  // DEFAULT DESCRIPTION
+  const defaultDescription = `
+A modern and scalable project designed with clean architecture, high performance, 
+and developer experience in mind. Built to be maintainable, flexible, and production-ready.
+`.trim();
+
+  // Tagline Generator
+  function generateTagline(name) {
+    const keywords = [
+      "Fast", "Next-Gen", "Scalable", "Modern", "Open-Source",
+      "High-Performance", "Smart", "Elegant", "Future-Ready"
+    ];
+    const tech = ["Framework", "Platform", "Toolkit", "Engine", "System"];
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    return `${pick(keywords)} ${pick(tech)} for ${name}`;
+  }
+
+  const tagline = generateTagline(data.name);
+
+  // AI Summary Generator
+  function generateAISummary(files) {
+    let summary = "This repository contains";
+
+    if (files.includes("src")) summary += " a structured source folder";
+    if (files.includes("test")) summary += ", automated tests";
+    if (files.includes("docs")) summary += ", documentation";
+    if (files.includes("public")) summary += ", public static assets";
+    if (files.includes("Dockerfile")) summary += ", Docker configuration";
+    if (files.includes("package.json")) summary += ", Node.js environment";
+    if (files.includes("requirements.txt")) summary += ", Python dependencies";
+
+    summary += ".\n\nOrganized with development best practices ensuring scalability, modularity, and ease of customization.";
+
+    return summary;
+  }
+
+  const aiSummary = generateAISummary(files);
+
+  // Language Badges
+  const langIcons = [];
+  if (files.some(f => f.endsWith(".js"))) langIcons.push("![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)");
+  if (files.some(f => f.endsWith(".ts"))) langIcons.push("![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)");
+  if (files.some(f => f.endsWith(".py"))) langIcons.push("![Python](https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=white)");
+  if (files.some(f => f.endsWith(".go"))) langIcons.push("![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white)");
+  if (files.some(f => f.endsWith(".rs"))) langIcons.push("![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white)");
+  if (files.some(f => f.endsWith(".cpp"))) langIcons.push("![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white)");
+  if (files.some(f => f.endsWith(".java"))) langIcons.push("![Java](https://img.shields.io/badge/Java-007396?logo=java&logoColor=white)");
+  if (files.some(f => f.endsWith(".html"))) langIcons.push("![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)");
+  if (files.some(f => f.endsWith(".css"))) langIcons.push("![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)");
+
+  // Release Notes
+  function generateReleaseNotes(files) {
+    const notes = [];
+    if (files.includes("src")) notes.push("- Initial codebase structure added");
+    if (files.includes("test")) notes.push("- Test suite implemented");
+    if (files.includes("docs")) notes.push("- Documentation initialized");
+    if (files.includes("Dockerfile")) notes.push("- Docker support added");
+    if (files.includes("public")) notes.push("- Frontend assets added");
+    if (files.includes("package.json")) notes.push("- Node.js environment setup");
+    if (files.includes("requirements.txt")) notes.push("- Python environment setup");
+
+    return notes.length
+      ? notes.map(n => `✨ ${n}`).join("\n")
+      : "No releases yet.";
+  }
+
+  const releaseNotes = generateReleaseNotes(files);
+
+  // Generate hierarchical folder tree
+  function generateFolderTree(files) {
+    const tree = {};
+
+    files.forEach(path => {
+      const parts = path.split("/");
+      let current = tree;
+
+      parts.forEach((part, index) => {
+        if (!current[part]) {
+          current[part] = (index === parts.length - 1) ? null : {};
+        }
+        current = current[part];
+      });
+    });
+
+    function renderTree(node, prefix = "") {
+      return Object.entries(node)
+        .map(([name, value], index, arr) => {
+          const isLast = index === arr.length - 1;
+          const branch = isLast ? "└── " : "├── ";
+          const nextPrefix = prefix + (isLast ? "    " : "│   ");
+
+          if (value === null) {
+            return `${prefix}${branch}📄 ${name}`;
+          } else {
+            return `${prefix}${branch}📁 ${name}\n` + renderTree(value, nextPrefix);
+          }
+        })
+        .join("\n");
+    }
+
+    return `📦 ${data.name}\n${renderTree(tree)}`;
+  }
+
+  // Social Icons
+  const socialIcons = `
+<p align="center">
+<a href="https://github.com/${data.owner.login}">
+<img src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github" />
+</a>
+<a href="https://linkedin.com/in/${data.owner.login}">
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin" />
+</a>
+<a href="https://twitter.com/${data.owner.login}">
+<img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter" />
+</a>
+<a href="https://${data.owner.login}.vercel.app">
+<img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=google-chrome" />
+</a>
+</p>
+`;
+
+  // Contributors Grid
+  const contributorsGrid = `
+<p align="center">
+<img src="https://contrib.rocks/image?repo=${data.owner.login}/${data.name}" />
+</p>
+`;
+
+  const projectDescription = data.description || defaultDescription;
+
+  return `
+<!-- Dynamic GIF Banner -->
+${gifBannerPath
+    ? `<p align="center"><img src="${gifBannerPath}" width="100%" /></p>`
+    : bannerPath
+    ? `<p align="center"><img src="${bannerPath}" width="100%" /></p>`
+    : `<p align="center"><img src="https://raw.githubusercontent.com/roshanlam/animated-banners/main/banners/gradient.gif" width="100%" /></p>`}
+
+<!-- Logo -->
+<p align="center">
+  <img src="${logoPath}" alt="Project Logo" width="150" />
+</p>
+
+<h1 align="center">🚀 ${data.name}</h1>
+<h3 align="center"><i>${tagline}</i></h3>
+
+<p align="center"><i>${projectDescription}</i></p>
+
+<p align="center">${langIcons.join(" ")}</p>
+
+${socialIcons}
 
 ---
 
-## 🌟 **Project Overview**
-
-Welcome to the amazing **${data.name}** project! This repository is dedicated to providing top-notch solutions and innovative features to make your development journey smoother and more enjoyable. Dive in and explore the powerful capabilities packed inside! 🎉✨
-
----
-
-## ✨ **Key Features**
-
-${files.includes("src") ? "🔧 Modular and well-structured source code for easy maintenance and scalability.\n" : ""}
-${files.includes("docs") ? "📚 Comprehensive built-in documentation to help you get started quickly.\n" : ""}
-${files.includes("test") ? "🧪 Thorough unit tests included to ensure reliability and robustness.\n" : ""}
-${files.includes("package.json") ? "📦 Node.js dependencies managed efficiently for seamless setup.\n" : ""}
-${files.includes("requirements.txt") ? "🐍 Python dependencies clearly listed for quick environment setup.\n" : ""}
-${files.includes("public") ? "🌐 Static assets organized for optimal performance and delivery.\n" : ""}
-${files.includes("README.md") ? "📖 Existing README detected, enhanced for better clarity and usability.\n" : ""}
+# 📘 AI Summary  
+${aiSummary}
 
 ---
 
-## 🚀 **Getting Started**
+# 🎯 Features  
+✔ AI-powered documentation  
+✔ Dynamic banners  
+✔ Auto-detected badges  
+✔ Contributors grid  
+✔ Professional visuals  
+✔ Modern UX-focused README  
+${files.includes("Dockerfile") ? "✔ Docker support\n" : ""}
 
-Follow these simple steps to get your development environment up and running in no time! 🛠️💻
+---
 
-\`\`\`bash
-git clone ${data.html_url}
-cd ${data.name}
-${files.includes("package.json") ? "npm install" : ""}
-${files.includes("requirements.txt") ? "pip install -r requirements.txt" : ""}
+# 📝 Release Notes  
+${releaseNotes}
+
+---
+
+# 📁 Project Structure  
+\`\`\`plaintext
+${generateFolderTree(files)}
 \`\`\`
 
----
-
-## 🏃‍♂️ **Usage Instructions**
-
-Start the application and explore its features with ease. 🚦
-
-\`\`\`bash
-${files.includes("package.json") ? "npm start" : "python main.py"}
-\`\`\`
 
 ---
 
-## 🤝 **Contributing**
-
-We welcome contributions from the community! Whether it's bug fixes, new features, or documentation improvements, your help is appreciated. Please read our contribution guidelines and submit a Pull Request. 📝💡
-
----
-
-## ❓ **Frequently Asked Questions (FAQ)**
-
-**Q:** How do I report issues?  
-**A:** Please use the GitHub Issues tab to report bugs or request features.
-
-**Q:** Is there a roadmap?  
-**A:** Check the project Wiki or Discussions for upcoming plans and milestones.
+# 👥 Contributors  
+${contributorsGrid}
 
 ---
 
-## 📄 **License**
-
-${data.license?.name || "No license specified."} 📜
-
----
-
-## 🙌 **Acknowledgements**
-
-Special thanks to all contributors and the open-source community for making this project possible! 🌟
+# 🤝 Contributions  
+We welcome all contributions. Fork → Improve → PR.
 
 ---
 
-## 👨‍💻 **Author**
-
-Made by [${data.owner.login}](${data.owner.html_url})  
+# 📄 License  
+**${data.license?.name || "No license provided"}**
 
 ---
 
-## 📫 **Contact**
+# 👤 Author  
+**[${data.owner.login}](${data.owner.html_url})**
 
-Feel free to reach out for support or collaboration opportunities! 📬
+---
+
+# ⭐ Support This Project  
+If this project helped you, drop a **star ⭐** — it's the best way to support the project!
+
+---
+
+# 🌐 Join the Community  
+- 🗣️ Join discussions  
+- 🐛 Report bugs  
+- 💡 Suggest features  
+- 🚀 Contribute code  
+
+---
+
+# 🙏 Thank You  
+Thanks for checking out this project!  
+Made with ❤️ for developers.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Open%20Source-Forever-blue?style=for-the-badge" />
+</p>
 
 `;
 }
+
+
+
 
   // DOM Ready
   document.addEventListener("DOMContentLoaded", () => {
