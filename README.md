@@ -103,7 +103,7 @@ Whether you're building a web app, API, or mobile tool — Documint lets you foc
 
 🔗 GitHub Repo: https://github.com/shivammaurya2903/Documint
 
-🪄 Live Demo: https://documint.free.nf/
+🪄 Live Demo: https://readmefilegenrator.netlify.app/
 
 💬 Report Issues: Open here
 
