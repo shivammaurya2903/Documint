@@ -1,0 +1,758 @@
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none; 
+  list-style: none;
+}
+:root {
+  --primary: #023653;
+  --accent: #056C89;
+  --light-bg: #EEEEEE;
+  --text-dark: #000000;
+  --text-light: #555555;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #fff;
+  border-bottom: 1px solid var(--accent);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo .icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.logo .icon img {
+  height: 60px;
+  width: 80px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.nav-buttons a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.outline-btn {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: #fff;
+}
+
+.filled-btn {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 3rem;
+  background: #fff;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+
+.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--primary);
+}
+
+
+.hero-preview video {
+  max-width: 500px;
+  max-height: 400px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 4rem;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+
+
+.feature {
+  max-width: 300px;
+}
+
+.feature h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: var(--text-light);
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 3rem;
+  background: var(--light-bg);
+}
+
+.cta h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.cta a {
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* 🚀 Roadmap Section */
+.roadmap {
+  text-align: center;
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.roadmap h2 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-subtitle {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
+}
+
+.phase {
+  max-width: 300px;
+  text-align: left;
+}
+
+.phase h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.phase p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.join-early {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.join-early h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.join-early p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* ❓ FAQ Section */
+.faq {
+  padding: 3rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+
+.faq h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.faq .highlight {
+  color: var(--primary);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-list details {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.faq-list summary {
+  font-weight: bold;
+  color: #023653;
+  font-size: 1rem;
+}
+
+.faq-list p {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.contact-prompt {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.contact-prompt a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer {
+  background: #023653;
+  color: #ffffff;
+  padding: 3rem 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-brand h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.footer-brand p {
+  margin-top: 0.5rem;
+  color: #cbd5e1;
+}
+
+.footer-links h4,
+.footer-newsletter h4,
+.footer-social h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.footer-links ul,
+.footer-social ul.legal {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li,
+.footer-social li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-social a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter input {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-newsletter button {
+  padding: 0.5rem 1rem;
+  background: #056C89;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.footer-newsletter p {
+  color: #cbd5e1;
+}
+
+.footer-social .icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-social img {
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 1rem;
+  color: #cbd5e1;
+}
+
+/* New icon styles */
+.feature-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+
+.nav-icon {
+  font-size: 1rem;
+  margin-right: 0.3rem;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  font-weight: bold;
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .nav-buttons {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-preview video {
+    max-width: 100%;
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+
+
+  .feature {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .roadmap {
+    padding: 2rem 1.5rem;
+  }
+
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phase {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .join-early {
+    padding: 1.5rem;
+  }
+
+  .faq {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-brand .logo {
+    justify-content: center;
+  }
+
+  .footer-links,
+  .footer-newsletter,
+  .footer-social {
+    text-align: center;
+  }
+
+  .footer-social .icons {
+    justify-content: center;
+  }
+
+  .footer-newsletter form {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo .icon img {
+    height: 40px;
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 0 0.25rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .cta-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .features {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature p {
+    font-size: 0.95rem;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .roadmap h2 {
+    font-size: 1.5rem;
+  }
+
+  .phase h3 {
+    font-size: 1.1rem;
+  }
+
+  .join-early h3 {
+    font-size: 1.2rem;
+  }
+
+  .faq h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-list details {
+    padding: 0.75rem;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.2rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4,
+  .footer-social h4 {
+    font-size: 1rem;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter button {
+    align-self: center;
+  }
+}
+
+@media (max-width: 414px) {
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .logo .icon img {
+    height: 35px;
+    width: 50px;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    margin: 0 0.2rem;
+  }
+
+  .nav-buttons a {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .cta-btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .features {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .feature h3 {
+    font-size: 1rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+  }
+
+  .cta h2 {
+    font-size: 1.4rem;
+  }
+
+  .roadmap h2 {
+    font-size: 1.4rem;
+  }
+
+  .phase h3 {
+    font-size: 1rem;
+  }
+
+  .join-early {
+    padding: 1.25rem;
+  }
+
+  .join-early h3 {
+    font-size: 1.1rem;
+  }
+
+  .faq h2 {
+    font-size: 1.4rem;
+  }
+
+  .faq-list details {
+    padding: 0.6rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.1rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4,
+  .footer-social h4 {
+    font-size: 0.95rem;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-newsletter button {
+    align-self: center;
+  }
+}

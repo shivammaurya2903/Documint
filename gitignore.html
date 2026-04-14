@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocuMint | Gitignore Generator</title>
+  <link rel="stylesheet" href="gitignore.css" />
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon"><img src="images/logo-b.png" alt="DocuMint Logo"></span>
+      <h1>DocuMint</h1>
+    </div>
+    <nav>
+      <a href="index.html"><span class="nav-icon"><i class="fas fa-home"></i></span>Dashboard</a>
+      <a href="home.html"><span class="nav-icon"><i class="fas fa-file-alt"></i></span>README Generator</a>
+      <a href="about.html"><span class="nav-icon"><i class="fas fa-circle-info"></i></span>About</a>
+      <a href="contact.html"><span class="nav-icon"><i class="fas fa-envelope"></i></span>Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Build a Clean .gitignore in Seconds</h2>
+      <p>Select your stack, add custom rules, and generate production-ready ignore content instantly.</p>
+    </section>
+
+    <section class="generator-wrap">
+      <div class="template-panel">
+        <h3>Templates</h3>
+        <p class="helper">Pick one or more template groups.</p>
+
+        <div class="template-grid" id="templateGrid">
+          <label><input type="checkbox" value="node" checked /> Node.js</label>
+          <label><input type="checkbox" value="python" /> Python</label>
+          <label><input type="checkbox" value="java" /> Java</label>
+          <label><input type="checkbox" value="frontend" /> Frontend Build</label>
+          <label><input type="checkbox" value="ide" checked /> IDE Files</label>
+          <label><input type="checkbox" value="os" checked /> OS Files</label>
+          <label><input type="checkbox" value="logs" checked /> Logs</label>
+          <label><input type="checkbox" value="env" checked /> Env Secrets</label>
+        </div>
+
+        <label class="custom-label" for="customRules">Custom rules (one per line)</label>
+        <textarea id="customRules" rows="7" placeholder="example:\n/cache\npublic/uploads/*\n!public/uploads/.gitkeep"></textarea>
+
+        <div class="actions">
+          <button id="generateBtn">Generate .gitignore</button>
+          <button id="copyBtn" class="secondary">Copy</button>
+          <button id="downloadBtn" class="secondary">Download</button>
+          <button id="clearBtn" class="ghost">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-panel">
+        <div class="output-head">
+          <h3>Generated .gitignore</h3>
+          <span id="lineCount">0 lines</span>
+        </div>
+        <textarea id="output" rows="24" spellcheck="false" aria-label="Generated gitignore content"></textarea>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DocuMint. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const templates = {
+      node: [
+        '# Node.js',
+        'node_modules/',
+        '.npm/',
+        '.pnpm-store/',
+        '.yarn/',
+        'npm-debug.log*',
+        'yarn-debug.log*',
+        'yarn-error.log*'
+      ],
+      python: [
+        '# Python',
+        '__pycache__/',
+        '*.py[cod]',
+        '*.pyo',
+        '.pytest_cache/',
+        '.venv/',
+        'venv/'
+      ],
+      java: [
+        '# Java',
+        '*.class',
+        '*.jar',
+        '*.war',
+        '.gradle/',
+        'build/',
+        'out/'
+      ],
+      frontend: [
+        '# Frontend build output',
+        'dist/',
+        'build/',
+        '.next/',
+        '.nuxt/',
+        '.cache/',
+        'coverage/'
+      ],
+      ide: [
+        '# IDE files',
+        '.vscode/',
+        '.idea/',
+        '*.suo',
+        '*.user',
+        '*.swp'
+      ],
+      os: [
+        '# Operating system files',
+        '.DS_Store',
+        'Thumbs.db',
+        'Desktop.ini'
+      ],
+      logs: [
+        '# Logs',
+        '*.log',
+        'logs/',
+        '*.pid'
+      ],
+      env: [
+        '# Environment and secrets',
+        '.env',
+        '.env.*',
+        '!.env.example',
+        '*.local'
+      ]
+    };
+
+    const output = document.getElementById('output');
+    const lineCount = document.getElementById('lineCount');
+    const customRules = document.getElementById('customRules');
+    const checkboxes = Array.from(document.querySelectorAll('#templateGrid input[type="checkbox"]'));
+
+    function updateLineCount(text) {
+      const lines = text ? text.split(/\r?\n/).length : 0;
+      lineCount.textContent = lines + ' lines';
+    }
+
+    function uniquePreserveOrder(lines) {
+      const seen = new Set();
+      return lines.filter((line) => {
+        const key = line.trim();
+        if (!key) return false;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function generateContent() {
+      const chosen = checkboxes.filter((box) => box.checked).map((box) => box.value);
+      const blocks = [];
+
+      chosen.forEach((key) => {
+        if (templates[key]) {
+          blocks.push(...templates[key], '');
+        }
+      });
+
+      const custom = customRules.value
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+
+      if (custom.length) {
+        blocks.push('# Custom rules', ...custom, '');
+      }
+
+      const content = uniquePreserveOrder(blocks).join('\n') + '\n';
+      output.value = content;
+      updateLineCount(content.trim());
+    }
+
+    document.getElementById('generateBtn').addEventListener('click', generateContent);
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      if (!output.value) generateContent();
+      try {
+        await navigator.clipboard.writeText(output.value);
+      } catch {
+        output.select();
+        document.execCommand('copy');
+      }
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      if (!output.value) generateContent();
+      const blob = new Blob([output.value], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = '.gitignore';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      customRules.value = '';
+      output.value = '';
+      updateLineCount('');
+    });
+
+    output.addEventListener('input', () => updateLineCount(output.value.trim()));
+
+    generateContent();
+  </script>
+</body>
+</html>
